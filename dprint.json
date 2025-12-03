@@ -1,0 +1,43 @@
+{
+  "$schema": "https://dprint.dev/schemas/v0.json",
+  "projectType": "openSource",
+  "incremental": true,
+  "typescript": {
+    "indentWidth": 2,
+    "lineWidth": 100,
+    "quoteStyle": "preferSingle",
+    "semiColons": "asi",
+    "useBraces": "preferNone"
+  },
+
+  "json": {
+    "indentWidth": 2
+  },
+
+  "markdown": {
+    "lineWidth": 100
+  },
+
+  "yaml": {
+    "indentWidth": 2
+  },
+
+  "includes": [
+    "**/*.{ts,tsx,js,jsx,json,md,yaml,yml}"
+  ],
+  "excludes": [
+    "**/node_modules",
+    "**/dist",
+    "**/build",
+    "**/coverage",
+    "**/.git",
+    "**/*.vue",
+    "**/*.{css,scss}"
+  ],
+  "plugins": [
+    "./dprint-plugins/typescript-0.95.12.wasm",
+    "./dprint-plugins/json-0.21.0.wasm",
+    "./dprint-plugins/markdown-0.20.0.wasm",
+    "./dprint-plugins/pretty_yaml-v0.5.1.wasm"
+  ]
+}

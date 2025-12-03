@@ -1,0 +1,86 @@
+{
+  "name": "my-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "engines": {
+    "node": ">=20.19.0",
+    "pnpm": ">=10.0.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "fmt": "dprint fmt && prettier --write \"src/**/*.vue\" && stylelint \"src/**/*.{css,vue}\" --fix",
+    "fmt:dprint": "dprint fmt",
+    "fmt:check": "dprint check && prettier --check \"src/**/*.vue\"",
+    "lint": "eslint \"src/**/*.{ts,tsx,js,jsx,vue}\"",
+    "lint:fix": "eslint --fix \"src/**/*.{ts,tsx,js,jsx,vue}\"",
+    "stylelint": "stylelint \"src/**/*.{css,vue}\"",
+    "stylelint:fix": "stylelint \"src/**/*.{css,vue}\" --fix",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "vue": "^3.5.24"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "@eslint/js": "^9.39.1",
+    "@types/node": "^24.10.1",
+    "@typescript-eslint/eslint-plugin": "^8.48.0",
+    "@typescript-eslint/parser": "^8.48.0",
+    "@unocss/preset-attributify": "66.5.10-beta.1",
+    "@unocss/preset-icons": "66.5.10-beta.1",
+    "@unocss/preset-wind": "66.5.10-beta.1",
+    "@unocss/transformer-variant-group": "66.5.10-beta.1",
+    "@unocss/vite": "66.5.10-beta.1",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "@vue/tsconfig": "^0.8.1",
+    "commitizen": "^4.3.1",
+    "cz-git": "^1.12.0",
+    "dprint": "^0.50.2",
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-vue": "^10.6.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "postcss-html": "^1.8.0",
+    "prettier": "^3.7.3",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "sass-embedded": "^1.93.3",
+    "stylelint-config-recommended-vue": "^1.6.1",
+    "stylelint-config-standard": "^39.0.1",
+    "stylelint-scss": "^6.12.1",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.48.0",
+    "unocss": "66.5.10-beta.1",
+    "vite": "npm:rolldown-vite@7.2.5",
+    "vue-eslint-parser": "^10.2.0",
+    "vue-tsc": "^3.1.4"
+  },
+  "overrides": {
+    "vite": "npm:rolldown-vite@7.2.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx}": [
+      "eslint --fix",
+      "dprint fmt --allow-no-files"
+    ],
+    "*.vue": [
+      "prettier --write",
+      "eslint --fix",
+      "stylelint --fix"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "dprint fmt  --allow-no-files"
+    ]
+  }
+}
