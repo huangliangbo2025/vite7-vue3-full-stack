@@ -77,6 +77,7 @@ export default [
     plugins: { prettier },
     rules: {
       'prettier/prettier': 'warn',
+      '@typescript-eslint/no-explicit-any': 'off',
     },
   },
 ]
