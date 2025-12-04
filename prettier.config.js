@@ -6,7 +6,7 @@ export default {
   trailingComma: 'none',
   tabWidth: 2,
   vueIndentScriptAndStyle: false,
-
+  endOfLine: 'lf',
   plugins: [
     'prettier-plugin-tailwindcss',
     'prettier-plugin-astro',

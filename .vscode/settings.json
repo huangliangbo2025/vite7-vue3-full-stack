@@ -4,7 +4,7 @@
   // =============================================
   "editor.formatOnSave": false,
   "editor.codeActionsOnSave": {
-    "source.fixAll": false
+    "source.fixAll": "never"
   },
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -65,5 +65,10 @@
   // UI 优化
   // =============================================
   "editor.guides.indentation": true,
-  "editor.renderWhitespace": "boundary"
+  "editor.renderWhitespace": "boundary",
+
+  // =============================================
+  // 修复 Delete '␍' eslint(prettier/prettier) 换行符的问题
+  // =============================================
+  "files.eol": "\n"
 }

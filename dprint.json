@@ -1,7 +1,7 @@
 {
   "$schema": "https://dprint.dev/schemas/v0.json",
-  "projectType": "openSource",
   "incremental": true,
+  "newLineKind": "lf",
   "typescript": {
     "indentWidth": 2,
     "lineWidth": 100,
@@ -9,7 +9,6 @@
     "semiColons": "asi",
     "useBraces": "preferNone"
   },
-
   "json": {
     "indentWidth": 2
   },
