@@ -1,7 +1,5 @@
-import { createApp } from 'vue'
-import './style.css'
-import 'uno.css'
 import type { UserModule } from '@/types/modules'
+import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router/index'
 import './styles/main.scss'
