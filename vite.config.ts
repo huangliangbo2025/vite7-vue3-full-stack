@@ -61,6 +61,8 @@ export default defineConfig({
       scss: {
         additionalData: `
             @use "@/styles/element-override.scss" as override;
+            @use "@/styles/variable.scss" as *;
+            @use "@/styles/element-reset.scss" as *;
           `,
       },
     },

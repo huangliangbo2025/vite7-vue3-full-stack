@@ -8,7 +8,7 @@ export default {
       path: '',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index.vue'),
-      meta: { title: '首页', requiresAuth: true },
+      meta: { title: '控制面板', requiresAuth: true, icon: 'menu-icon-dashboard' },
     },
   ],
 }

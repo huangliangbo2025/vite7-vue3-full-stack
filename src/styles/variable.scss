@@ -1,0 +1,11 @@
+$top-bar-height: 48px; // 顶部导航栏的高度
+$sidebar-width: 260px; // 侧边栏的宽度
+$main-width: calc(100vh - $sidebar-width); // layout-main的宽度
+$main-height: calc(100vh - $top-bar-height); // layout-main的高度
+
+html {
+  --top-bar-height: 48px;
+  --sidebar-width: 260px;
+  --main-width: calc(100vh - $sidebar-width);
+  --main-height: calc(100vh - $top-bar-height);
+}

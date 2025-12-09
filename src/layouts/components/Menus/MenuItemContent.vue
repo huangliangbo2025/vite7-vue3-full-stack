@@ -19,7 +19,7 @@ defineProps<Props>()
         'text-10px!': !item.meta?.icon
       }"
     >
-      <svg-icon :name="(item.meta?.icon || 'menu-icon-default') as IconNames" />
+      <svg-icon :name="item.meta?.icon || 'menu-icon-default'" />
     </span>
     <span class="menu-title">{{ item.meta?.title }}</span>
     <i
