@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { generateMenuData } from '@/utils'
-import { RouteView, Menus } from './components'
+import { RouteView, Menus, Header } from './components'
 import { permissionsRoutes } from '@/router'
 
 const menuData = computed(() => generateMenuData(permissionsRoutes))
@@ -13,8 +13,10 @@ const menuData = computed(() => generateMenuData(permissionsRoutes))
         <Menus :menuData="menuData" :collapse="false" />
       </el-aside>
       <el-container class="layout-main">
-        <el-header class="layout-header !p-0px"> Header </el-header>
-        <el-main class="overflow-hidden bg-[var(--el-bg-color-page)] p-0!">
+        <el-header class="layout-header !p-0px">
+          <Header />
+        </el-header>
+        <el-main class="overflow-hidden !p-0">
           <div id="view-container" class="h-full w-full">
             <RouteView />
           </div>
@@ -27,6 +29,7 @@ const menuData = computed(() => generateMenuData(permissionsRoutes))
 <style lang="scss" scoped>
 .layout-header {
   height: $top-bar-height;
+  background: #fff;
 }
 
 .layout-aside {
@@ -37,5 +40,6 @@ const menuData = computed(() => generateMenuData(permissionsRoutes))
   position: relative;
   z-index: 1;
   overflow-y: auto;
+  background-color: #fff;
 }
 </style>

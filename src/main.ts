@@ -3,6 +3,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router/index'
 import './styles/main.scss'
+import './styles/element-reset.scss'
 import 'virtual:uno.css'
 import 'virtual:svg-icons-register' // 注册svg-icon脚本
 
