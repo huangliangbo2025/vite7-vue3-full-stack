@@ -4,6 +4,8 @@ const router = useRouter()
 const goHome = () => router.push('/')
 const goLogin = () => router.push('/login')
 const goDashboard = () => router.push('/dashboard')
+
+const el = ref<HTMLDivElement>()
 </script>
 
 <template>

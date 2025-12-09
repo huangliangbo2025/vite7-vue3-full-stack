@@ -2,9 +2,11 @@ import js from '@eslint/js'
 import eslintConfigPrettier from 'eslint-config-prettier'
 import prettier from 'eslint-plugin-prettier'
 import vue from 'eslint-plugin-vue'
+import globals from 'globals'
 import fs from 'node:fs'
 import tseslint from 'typescript-eslint'
 import vueParser from 'vue-eslint-parser'
+
 // ⭐ 加载 auto-import 的 JSON（旧格式包含 "globals"）
 const autoImportJson = JSON.parse(
   fs.readFileSync(new URL('./.eslintrc-auto-import.json', import.meta.url), 'utf8'),
@@ -27,6 +29,7 @@ const autoImportEslint = {
       Buffer: 'readonly',
       URL: 'readonly',
       ...autoImportJson.globals,
+      ...globals.browser,
     },
   },
 }
@@ -55,6 +58,9 @@ export default [
         parser: tseslint.parser,
         ecmaVersion: 'latest',
         sourceType: 'module',
+        ecmaFeatures: {
+          jsx: true, // ⬅️ 必须
+        },
       },
     },
     plugins: {
@@ -78,6 +84,7 @@ export default [
     rules: {
       'prettier/prettier': 'warn',
       '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-unused-vars': 'warn',
     },
   },
 ]
