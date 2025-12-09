@@ -4,6 +4,7 @@ import App from './App.vue'
 import router from './router/index'
 import './styles/main.scss'
 import 'virtual:uno.css'
+import 'virtual:svg-icons-register' // 注册svg-icon脚本
 
 const app = createApp(App)
 
