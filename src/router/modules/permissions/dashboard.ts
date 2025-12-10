@@ -1,6 +1,15 @@
 import { BasicLayout } from '@/layouts'
 
-export default {
+export default [{
+  path: '/apps',
+  name: 'Apps',
+  redirect: '/access-control',
+  meta: {
+    title: 'APP & PAGES',
+    disabled: true,
+  },
+  children: [],
+}, {
   path: '/dashboard',
   component: BasicLayout,
   children: [
@@ -11,4 +20,4 @@ export default {
       meta: { title: '控制面板', requiresAuth: true, icon: 'menu-icon-dashboard' },
     },
   ],
-}
+}]
