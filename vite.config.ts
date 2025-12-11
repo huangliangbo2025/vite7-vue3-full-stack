@@ -3,6 +3,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import path from 'node:path'
 import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
+import ElementPlus from 'unplugin-element-plus/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
@@ -37,6 +38,9 @@ export default defineConfig({
       resolvers: [ElementPlusResolver({
         importStyle: 'sass', // 自动引入修改主题色添加这一行，使用预处理样式
       })],
+    }),
+    ElementPlus({ // 新增：配置 Element Plus 样式
+      useSource: true, // 使用源代码样式，避免样式缺失
     }),
   ],
   css: {
