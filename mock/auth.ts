@@ -11,7 +11,7 @@ export default [
     timeout: 1000, // 模拟延迟
     response: ({ body }: any) => {
       console.log('Login request body:', body)
-      if (body.username === 'admin' && body.password === '123456') {
+      if (body.username === 'admin' && body.password === 'admin') {
         return createResponse({
           token: uuidv4(),
           ...body,
@@ -19,7 +19,7 @@ export default [
           avatar: 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png',
         })
       } else {
-        return createErrorResponse('正确的账号密码是:admin/123456', 0)
+        return createErrorResponse('正确的账号密码是:admin/admin', 0)
       }
     },
   },

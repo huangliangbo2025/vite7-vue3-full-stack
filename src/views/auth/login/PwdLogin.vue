@@ -45,12 +45,13 @@ const passVisibleToggleClick = () => {
 
 const { loginMutation } = useReqLogin()
 const { isPending, mutate } = loginMutation
+const isDev = import.meta.env.DEV
 
 const onSubmit = async () => {
   await formRef.value?.validate(async (valid: boolean, fields: any) => {
     if (valid) {
       console.log('submit!')
-      if (!validateRef.value!.validate(form.code)) {
+      if (!isDev && !validateRef.value!.validate(form.code)) {
         ElMessage.warning('验证码不正确')
         validateRef.value?.refresh()
         return
