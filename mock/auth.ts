@@ -1,7 +1,6 @@
 // mock/index.ts
 import { v4 as uuidv4 } from 'uuid'
 import type { MockMethod } from 'vite-plugin-mock'
-import { MenuMockData } from '../mock copy/menu.mock'
 import { createErrorResponse, createResponse } from './util'
 
 export default [
@@ -12,30 +11,16 @@ export default [
     timeout: 1000, // 模拟延迟
     response: ({ body }: any) => {
       console.log('Login request body:', body)
-      if (body.username === 'admin' && body.password === 'admin') {
+      if (body.username === 'admin' && body.password === '123456') {
         return createResponse({
           token: uuidv4(),
           ...body,
           role: ['admin'],
-          menus: MenuMockData,
           avatar: 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png',
         })
       } else {
-        return createErrorResponse('正确的账号密码是:admin/123456', 401)
+        return createErrorResponse('正确的账号密码是:admin/123456', 0)
       }
     },
-  },
-  {
-    url: '/api/getUser',
-    method: 'get',
-    timeout: 1000, // 模拟延迟
-    response: request =>
-      createResponse({
-        token: uuidv4(),
-        username: 'admin',
-        roles: ['admin'],
-        menus: MenuMockData,
-        avatar: 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png',
-      }, request),
   },
 ] as MockMethod[]

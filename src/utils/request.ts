@@ -56,7 +56,7 @@ const createAxiosInstance = (baseURL?: string): AxiosInstance => {
         }
       } else if (response.data?.code === 401) {
         clearUserInfo()
-        window.location.href = '/login'
+        window.location.href = '/auth/login'
       } else {
         console.log('--- 响应数据 ---', response.data)
         // 业务逻辑错误
@@ -75,7 +75,7 @@ const createAxiosInstance = (baseURL?: string): AxiosInstance => {
             errorMessage = '未授权，请重新登录'
             // 清除 token 并跳转到登录页
             clearUserInfo()
-            window.location.href = '/login'
+            window.location.href = '/auth/login'
             break
           case 403:
             errorMessage = '拒绝访问'
