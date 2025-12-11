@@ -79,7 +79,7 @@ export default [
 
   // Prettier 检查（让 Prettier 负责格式）
   {
-    files: ['**/*.{ts,tsx,js,jsx,vue}'],
+    files: ['**/*.{ts,tsx,js,jsx,vue}', 'mock/**/*.ts'],
     plugins: { prettier },
     rules: {
       'prettier/prettier': 'warn',

@@ -22,7 +22,8 @@
   },
 
   "includes": [
-    "**/*.{ts,tsx,js,jsx,json,md,yaml,yml}"
+    "**/*.{ts,tsx,js,jsx,json,md,yaml,yml}",
+    "mock/**/*.ts"
   ],
   "excludes": [
     "**/node_modules",
