@@ -2,7 +2,7 @@
 import { Hide, Lock, Message, User, View } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
 import { pick } from 'lodash-es'
-import { useReqLogin } from './useReqLogin'
+import { useReqLogin } from '../hooks/useReqLogin'
 
 const passVisible = ref(false)
 const formRef = useTemplateRef('formRef')

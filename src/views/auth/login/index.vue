@@ -1,5 +1,44 @@
 <script lang="ts" setup>
-import PwdLogin from './PwdLogin.vue'
+import PwdLogin from './components/PwdLogin.vue'
+import SmsLogin from './components/SmsLogin.vue'
+import { ElLink } from 'element-plus'
+
+const tabs = [
+  {
+    title: '账号密码登录',
+    key: 'pwd',
+    component: PwdLogin
+  },
+  {
+    title: '验证码登录',
+    key: 'code',
+    component: SmsLogin
+  }
+]
+
+const activeTab = ref('pwd')
+
+const activeComponent = computed(() => {
+  const tab = tabs.find((t) => t.key === activeTab.value)
+  return tab ? tab.component : PwdLogin
+})
+
+const getElLinkAttrs = (tabKey: string): InstanceType<typeof ElLink>['$props'] => {
+  if (activeTab.value !== tabKey) {
+    return {
+      type: 'default',
+      underline: 'never'
+    }
+  }
+  return {
+    type: 'primary',
+    underline: 'always'
+  }
+}
+
+function onTabChange(key: string) {
+  activeTab.value = key
+}
 </script>
 
 <template>
@@ -8,14 +47,27 @@ import PwdLogin from './PwdLogin.vue'
       <div class="head mb-30px">
         <p class="text-30px mb-12px text-center font-bold">欢迎回来</p>
       </div>
+      <div class="mb-30px gap-30px flex justify-center">
+        <el-link
+          v-for="tab in tabs"
+          :key="tab.key"
+          v-bind="getElLinkAttrs(tab.key)"
+          @click="onTabChange(tab.key)"
+        >
+          {{ tab.title }}
+        </el-link>
+      </div>
       <el-config-provider
         component-size="large"
         :input="{
           size: 'large'
         }"
       >
-        <component :is="PwdLogin" />
+        <component :is="activeComponent" />
       </el-config-provider>
+      <div class="flex justify-end">
+        <el-link type="primary">去注册</el-link>
+      </div>
     </div>
   </div>
 </template>
@@ -35,6 +87,7 @@ import PwdLogin from './PwdLogin.vue'
   left: 50%;
   box-sizing: border-box;
   width: 406px;
+  min-height: 484px;
   padding: 36px;
   border-radius: 8px;
   background: #fff;
@@ -49,10 +102,6 @@ import PwdLogin from './PwdLogin.vue'
   position: relative;
   z-index: 111;
   background-color: #fff;
-
-  .el-form-item {
-    margin-bottom: 30px !important;
-  }
 
   .el-input__wrapper {
     height: $height;
