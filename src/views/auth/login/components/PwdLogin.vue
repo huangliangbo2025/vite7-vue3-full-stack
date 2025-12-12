@@ -63,6 +63,19 @@ const onSubmit = async () => {
     }
   })
 }
+
+const onEnter = (event: KeyboardEvent) => {
+  if (event.key === 'Enter' || event.keyCode === 13) {
+    // 触发登录
+    onSubmit()
+  }
+}
+
+document.addEventListener('keydown', onEnter)
+
+onUnmounted(() => {
+  document.removeEventListener('keydown', onEnter)
+})
 </script>
 
 <template>
