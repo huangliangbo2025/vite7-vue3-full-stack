@@ -8,16 +8,27 @@ export const install: UserModule = ({ app, router }) => {
   router.beforeEach(async (to, _from, next) => {
     NProgress.start()
 
-    if (to.meta?.noLogin) {
-      next()
-      return
-    }
-
     const { token } = useAuthStore()
 
     if (!token) {
+      // 无需登录验证
+      if (to.meta?.noLogin) {
+        next()
+        return
+      }
+
+      // 未登录，去登录页
       next({
         path: '/auth/login',
+        replace: true,
+      })
+      return
+    }
+
+    // 已登录，无需去登录
+    if (to.path === '/auth/login') {
+      next({
+        path: '/',
         replace: true,
       })
       return
