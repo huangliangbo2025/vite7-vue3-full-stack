@@ -10,5 +10,11 @@ export default {
       component: () => import('@/views/auth/login/index.vue'),
       meta: { title: '登录', noLogin: true },
     },
+    {
+      path: 'register',
+      name: 'Register',
+      component: () => import('@/views/auth/register/index.vue'),
+      meta: { title: '登录', noLogin: true },
+    },
   ],
 }

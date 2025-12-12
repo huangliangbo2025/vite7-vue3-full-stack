@@ -4,7 +4,7 @@ import type { MockMethod } from 'vite-plugin-mock'
 import { createErrorResponse, createResponse } from './util'
 
 export default [
-  // 示例 2：POST 请求 + 动态参数
+  // 登录接口
   {
     url: '/api/login',
     method: 'post',
@@ -21,6 +21,15 @@ export default [
       } else {
         return createErrorResponse('正确的账号密码是:admin/admin', 0)
       }
+    },
+  },
+  // 注册接口
+  {
+    url: '/api/register',
+    method: 'post',
+    timeout: 1000, // 模拟延迟
+    response: ({ body }: any) => {
+      return createResponse(body)
     },
   },
 ] as MockMethod[]

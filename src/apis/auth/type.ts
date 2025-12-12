@@ -33,3 +33,9 @@ export interface UserInfo {
 }
 
 export type LoginResponse = UserInfo
+
+export interface RegisterParams {
+  username: string
+  password: string
+  nickname: string
+}

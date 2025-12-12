@@ -68,7 +68,12 @@ const onSubmit = async () => {
 <template>
   <el-form ref="formRef" class="login-form-box" :model="form" :rules="rules">
     <el-form-item prop="username">
-      <el-input v-model.trim="form.username" placeholder="请输入用户名" size="large">
+      <el-input
+        v-model.trim="form.username"
+        placeholder="请输入用户名"
+        size="large"
+        autocomplete="off"
+      >
         <template #prefix>
           <el-icon class="text-16px">
             <User />
@@ -81,6 +86,7 @@ const onSubmit = async () => {
         v-model.trim="form.password"
         :type="passInputType"
         placeholder="请输入密码"
+        autocomplete="new-password"
         size="large"
       >
         <template #prefix>

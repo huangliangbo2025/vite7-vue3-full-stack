@@ -3,6 +3,8 @@ import PwdLogin from './components/PwdLogin.vue'
 import SmsLogin from './components/SmsLogin.vue'
 import { ElLink } from 'element-plus'
 
+const router = useRouter()
+
 const tabs = [
   {
     title: '账号密码登录',
@@ -66,7 +68,9 @@ function onTabChange(key: string) {
         <component :is="activeComponent" />
       </el-config-provider>
       <div class="flex justify-end">
-        <el-link type="primary">去注册</el-link>
+        <el-link class="!text-14px" type="primary" @click="router.push('/auth/register')"
+          >去注册</el-link
+        >
       </div>
     </div>
   </div>
