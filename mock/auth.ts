@@ -19,7 +19,7 @@ export default [
           avatar: 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png',
         })
       } else {
-        return createErrorResponse('正确的账号密码是:admin/123456', 401)
+        return createErrorResponse('正确的账号密码是:admin/admin', 0)
       }
     },
   },

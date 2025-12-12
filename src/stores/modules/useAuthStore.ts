@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 import { useStorage } from '@vueuse/core'
 
 export const useAuthStore = defineStore('auth', () => {
-  const userInfo = useStorage<any>('auth-user-info', null)
+  const userInfo = useStorage<any>('auth-user-info', {}, localStorage)
 
   const token = computed<string>(() => userInfo.value?.token || '')
 
