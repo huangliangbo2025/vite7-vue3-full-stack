@@ -10,6 +10,7 @@
     },
     "types": [
       "vite/client",
+      "node",
       "vue",
       "unplugin-auto-import/types",
       "unplugin-vue-components/types",
