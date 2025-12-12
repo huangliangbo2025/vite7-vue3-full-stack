@@ -19,7 +19,7 @@ export default [{
       path: '/dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index.vue'),
-      meta: { title: '控制面板', requiresAuth: true, icon: 'menu-icon-dashboard' },
+      meta: { title: '控制面板', icon: 'menu-icon-dashboard' },
     },
   ],
 }] as RouteRecordRaw[]

@@ -18,6 +18,6 @@ declare module 'vue-router' {
     /* 是否禁用 */
     disabled?: boolean
     /* 是否需要登录 */
-    requiresAuth?: false
+    noLogin?: boolean
   }
 }
