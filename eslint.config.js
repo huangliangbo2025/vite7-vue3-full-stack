@@ -82,6 +82,7 @@ export default [
     files: ['**/*.{ts,tsx,js,jsx,vue}', 'mock/**/*.ts'],
     plugins: { prettier },
     rules: {
+      'no-undef': 'off',
       'prettier/prettier': 'warn',
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-unused-vars': 'warn',
