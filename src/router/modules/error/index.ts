@@ -15,6 +15,7 @@ const errorRoutes: RouteRecordRaw[] = [
         path: '',
         name: 'NotFound',
         meta: {
+          noLogin: true,
           title: '页面找不到',
           hideInMenu: true,
           hideInTags: true,
