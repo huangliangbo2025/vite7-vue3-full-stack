@@ -20,7 +20,7 @@ const permissionsModules = import.meta.glob(`./permissions/*.ts`, {
   eager: true,
 }) as Modules
 
-const commonModules = import.meta.glob(`./common/*.ts`, {
+const authModules = import.meta.glob(`./auth/*.ts`, {
   eager: true,
 }) as Modules
 
@@ -29,7 +29,7 @@ const errorModules = import.meta.glob(`./error/*.ts`, {
 }) as Modules
 
 export const permissionsRoutes = getRouters(permissionsModules)
-export const commonRoutes = getRouters(commonModules)
+export const authRoutes = getRouters(authModules)
 export const errorRoutes = getRouters(errorModules)
 
 console.log('permissionsRoutes:', permissionsRoutes)
