@@ -24,6 +24,8 @@ export const install: UserModule = ({ app, router }) => {
       return
     }
 
+    // 你可以在这里进一步做拦截，如果你跳转的路由在permissionRoute的菜单里，但是不在你的权限内，你可以跳转到权限拦截界面，比如401界面
+
     next()
   })
 

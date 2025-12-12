@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import { commonRoutes, permissionsRoutes } from './modules/index'
+import { commonRoutes, errorRoutes, permissionsRoutes } from './modules/index'
 
-const routes = [...commonRoutes, ...permissionsRoutes]
+const routes = [...commonRoutes, ...permissionsRoutes, ...errorRoutes]
 
 const router = createRouter({
   history: createWebHistory(),
