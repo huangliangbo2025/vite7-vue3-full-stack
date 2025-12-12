@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { useAuthStore } from '@/stores'
+import { useTitle } from '@vueuse/core'
 
-const { token, userInfo } = useAuthStore()
-
-console.log('--token--', token, userInfo)
+useTitle(import.meta.env.VITE_TITLE)
 </script>
 
 <template>

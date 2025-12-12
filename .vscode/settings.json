@@ -72,5 +72,17 @@
   // =============================================
   // 修复 Delete '␍' eslint(prettier/prettier) 换行符的问题
   // =============================================
-  "files.eol": "\n"
+  "files.eol": "\n",
+
+  // =============================================
+  // 对更目录进行折叠，让目录看起来更清爽一点
+  // =============================================
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "package.json": "pnpm-lock.yaml, commitlint.config.js, .editorconfig, .gitattributes",
+    "eslint.config.js": ".eslintrc-auto-import.json, prettier.config.js, .prettierignore, dprint.json, stylelint.config.js",
+    "tsconfig.json": "tsconfig*.json",
+    "README.md": "README_CN.md",
+    ".env": ".env.*"
+  }
 }
