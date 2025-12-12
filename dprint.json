@@ -32,7 +32,8 @@
     "**/coverage",
     "**/.git",
     "**/*.vue",
-    "**/*.{css,scss}"
+    "**/*.{css,scss}",
+    "pnpm-lock.yaml"
   ],
   "plugins": [
     "./dprint-plugins/typescript-0.95.12.wasm",
