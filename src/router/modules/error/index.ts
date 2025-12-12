@@ -6,15 +6,13 @@ const errorRoutes: RouteRecordRaw[] = [
   {
     path: '/:pathMatch(.*)*',
     redirect: '/404',
-    meta: {
-      title: '页面找不到',
-      hideInMenu: true,
-      hideInTags: true,
-    },
+  },
+  {
+    path: '/404',
     component: BasicLayout,
     children: [
       {
-        path: '/404',
+        path: '',
         name: 'NotFound',
         meta: {
           title: '页面找不到',
