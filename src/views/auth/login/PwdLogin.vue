@@ -45,13 +45,13 @@ const passVisibleToggleClick = () => {
 
 const { loginMutation } = useReqLogin()
 const { isPending, mutate } = loginMutation
-const isDev = import.meta.env.DEV
+const isProd = import.meta.env.PROD
 
 const onSubmit = async () => {
   await formRef.value?.validate(async (valid: boolean, fields: any) => {
     if (valid) {
-      console.log('submit!')
-      if (!isDev && !validateRef.value!.validate(form.code)) {
+      // 开发环境下不需要验证
+      if (isProd && !validateRef.value!.validate(form.code)) {
         ElMessage.warning('验证码不正确')
         validateRef.value?.refresh()
         return
