@@ -1,13 +1,14 @@
 import { defineStore } from 'pinia'
 
+import type { UserInfo } from '@/apis/auth/type'
 import { useStorage } from '@vueuse/core'
 
 export const useAuthStore = defineStore('auth', () => {
-  const userInfo = useStorage<any>('auth-user-info', {}, localStorage)
+  const userInfo = useStorage('auth-user-info', {} as UserInfo, localStorage)
 
   const token = computed<string>(() => userInfo.value?.token || '')
 
-  function setUserInfo(info: any) {
+  function setUserInfo(info: UserInfo) {
     console.log('Setting user info:', info)
     userInfo.value = info
   }

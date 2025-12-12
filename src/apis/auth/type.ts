@@ -23,19 +23,13 @@ export interface MenuItem extends RouteMeta {
 export interface UserInfo {
   username: string
   token: string
-  status: number
-  isadmin: number
-  roleId: number
-  ip: string
-  userAgent: string
-  loginTime: string
-  expireTime: 0
+  isAdmin: number
+  role: string | string[]
   createTime: string
   nickname: string
   remark: string
-  accountId?: string | number // 用户账号ID
-  sid?: string | number // 商户ID
-  permissions: string[]
+  menuPermissions: string[]
+  buttonPermissions: string[]
 }
 
 export type LoginResponse = UserInfo
