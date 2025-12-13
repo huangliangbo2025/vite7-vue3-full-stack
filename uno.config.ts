@@ -12,7 +12,7 @@ export default defineConfig({
   ],
 
   shortcuts: [
-    ['page-container', 'p-5'],
+    ['page-container', 'p-5 overflow-y-auto w-full h-full'],
   ],
 
   // safelist: 'prose prose-sm m-auto text-left'.split(' '),

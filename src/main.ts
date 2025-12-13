@@ -9,7 +9,15 @@ import 'virtual:svg-icons-register' // 注册svg-icon脚本
 import { QueryClient, VueQueryPlugin } from '@tanstack/vue-query'
 
 // 创建一个queryClient
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false, // ❌ 关闭窗口聚焦自动刷新
+      refetchOnReconnect: false, // （可选）网络重连时也不刷新
+      retry: false, // （可选）失败不重试
+    },
+  },
+})
 
 const app = createApp(App)
 

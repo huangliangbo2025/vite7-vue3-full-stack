@@ -11,7 +11,7 @@ const { isFetching } = queryMenuList
 </script>
 
 <template>
-  <div class="w-full p-5">
+  <div class="page-container">
     <div class="mb-5">
       <p class="text-info">您可以进入角色权限界面，对菜单全新进行分配</p>
       <p class="text-info">你可以在菜单下添加按钮，需要前端配合才能做到按钮的权限限制</p>
