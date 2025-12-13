@@ -6,7 +6,6 @@ export interface CreateUserDto {
   nickname: string
   status: 1 | 0
   remark: string
-  isAdmin: [1, 0] // 是否是系统管理员， 如果是系统管理员，就不应该被限制
 }
 
 export interface UserDto extends CreateUserDto {
@@ -14,4 +13,5 @@ export interface UserDto extends CreateUserDto {
   lastLoginTime: string
   ip: string
   userAgent: string
+  isAdmin?: 1 | 0 // 是否是系统管理员， 如果是系统管理员，就不应该被限制
 }

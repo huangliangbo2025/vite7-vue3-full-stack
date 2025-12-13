@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { RoleDto } from '@/apis/role'
 import type { TableColumn } from '@/components/TheTable/type'
-import { Edit } from '@element-plus/icons-vue'
+import { Delete, Edit } from '@element-plus/icons-vue'
 
 const emit = defineEmits<{
   edit: [v: RoleDto]
@@ -22,6 +22,10 @@ const columns: TableColumn[] = [
     prop: 'updateTime'
   },
   {
+    label: '权限',
+    prop: 'permission'
+  },
+  {
     label: '操作',
     prop: 'operate',
     width: 120
@@ -36,12 +40,29 @@ const columns: TableColumn[] = [
         {{ scope.row.name }}
       </el-link>
     </template>
+    <template #permission="scope">
+      <el-space>
+        <el-link :underline="false" type="primary" @click="emit('view', scope.row)">
+          分配菜单权限
+        </el-link>
+        <el-link :underline="false" type="primary" @click="emit('view', scope.row)">
+          绑定按钮权限
+        </el-link>
+      </el-space>
+    </template>
     <template #operate="scope">
-      <el-link :underline="false" @click="emit('edit', scope.row)">
-        <el-icon :size="24">
-          <Edit />
-        </el-icon>
-      </el-link>
+      <el-space>
+        <el-link :underline="false" type="primary" @click="emit('edit', scope.row)">
+          <el-icon :size="16">
+            <Edit />
+          </el-icon>
+        </el-link>
+        <el-link :underline="false" type="danger" @click="emit('edit', scope.row)">
+          <el-icon :size="16">
+            <Delete />
+          </el-icon>
+        </el-link>
+      </el-space>
     </template>
   </TheTable>
 </template>

@@ -28,5 +28,11 @@ export default [{
       component: () => import('@/views/sys-manage/role/index.vue'),
       meta: { title: '角色管理' },
     },
+    {
+      path: 'menu',
+      name: 'Menu',
+      component: () => import('@/views/sys-manage/menu/index.vue'),
+      meta: { title: '菜单管理' },
+    },
   ],
 }] as RouteRecordRaw[]
