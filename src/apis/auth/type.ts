@@ -20,7 +20,7 @@ export interface MenuItem extends RouteMeta {
   children?: MenuItem[]
 }
 
-export interface UserInfo {
+export interface LoginResponse {
   username: string
   token: string
   isAdmin: number
@@ -31,8 +31,6 @@ export interface UserInfo {
   menuPermissions: string[]
   buttonPermissions: string[]
 }
-
-export type LoginResponse = UserInfo
 
 export interface RegisterParams {
   username: string

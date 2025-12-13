@@ -11,6 +11,10 @@ export default defineConfig({
     transformerVariantGroup(), // 支持 hover:(bg-red text-white)
   ],
 
+  shortcuts: [
+    ['page-container', 'p-5'],
+  ],
+
   // safelist: 'prose prose-sm m-auto text-left'.split(' '),
   // 预设主演颜色的指令
   theme: {
