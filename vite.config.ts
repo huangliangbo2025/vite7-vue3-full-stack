@@ -33,7 +33,10 @@ export default defineConfig(({ command }) => {
       AutoImport({
         include: [/\.[jt]sx?$/, /\.vue$/, /\.vue\?vue/],
         imports: ['vue', 'vue-router'],
-        resolvers: [ElementPlusResolver()],
+        resolvers: [ElementPlusResolver({
+          // 自动引入修改主题色添加这一行，使用预处理样式，不添加将会导致使用ElMessage，ElNotification等组件时默认的主题色会覆盖自定义的主题色
+          importStyle: 'sass',
+        })],
         dts: 'typings/auto-imports.d.ts',
         vueTemplate: true,
         eslintrc: {
