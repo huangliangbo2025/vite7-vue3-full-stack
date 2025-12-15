@@ -108,7 +108,7 @@ const statisticalList = computed(() => {
           </div>
         </template>
         <div>
-          <TheBarChart class="h-160" :data="domainStats?.chartData" />
+          <TheBarChart class="h-100" :data="domainStats?.chartData" />
         </div>
       </el-card>
     </template>
