@@ -8,16 +8,16 @@ declare module 'vue-router' {
     /* assets/icons */
     icon?: string
     /* 排序 */
-    sort?: number
+    order?: number
     /* 是否缓存 */
-    isCache?: boolean
+    keepAlive?: boolean
     /* 是否在菜单栏隐藏, 例如详情页 */
-    hideInMenu?: boolean
-    /* 总是显示在二级菜单，哪怕二级菜单只有一条 */
-    alwayShowChildInMenu?: boolean
-    /* 是否禁用 */
-    disabled?: boolean
+    hidden?: boolean
     /* 是否需要登录 */
     noLogin?: boolean
+    /* 是否禁止点击 */
+    disabled: boolean
+    // 权限
+    permissions?: string[]
   }
 }

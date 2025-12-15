@@ -39,7 +39,7 @@ const columns: TableColumn[] = [
   },
   {
     label: '状态',
-    prop: 'status',
+    prop: 'enabled',
     width: 80
   },
   {
@@ -55,8 +55,8 @@ const columns: TableColumn[] = [
     <template #buttons="{ row }">
       <el-link type="primary" class="text-12px!" @click="emit('edit', row)"> 查看 </el-link>
     </template>
-    <template #status="{ row }">
-      <el-switch v-model="row.status" :active-value="1" :inactive-value="0" />
+    <template #enabled="{ row }">
+      <el-switch v-model="row.enabled" :active-value="1" :inactive-value="0" />
     </template>
     <template #operate="{ row }">
       <el-space>

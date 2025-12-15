@@ -53,13 +53,17 @@ export default defineConfig({
         'background-color': `var(--el-color-${type}-light-${num})`,
       }),
     ],
+    // END ==========================================
+
+    // 字体深色配置
+
     [
-      /^text-(primary|success|warning|danger|error|info-dark)/,
+      /^text-(primary|success|warning|danger|error|info)-dark/,
       ([, type]) => ({
-        color: `var(--el-color-${type}-dark-2)`,
+        color: `var(--el-color-${type}-2)`,
       }),
     ],
-    // END ==========================================
+
     // 多文本溢出出现省略号 text-ellipsis-1 => '-webkit-line-clamp': 1,
     [
       /^text-ellipsis-(\d+)$/,

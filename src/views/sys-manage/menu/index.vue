@@ -3,7 +3,7 @@ import { useDialog } from '@/hooks'
 import { FilterMenuSearch, MenuFormDialog, MenuTable } from './components'
 import { useReqMenu } from './hooks'
 
-const { openDialog, openEditDialog } = useDialog()
+const { dialogRef, openDialog, openEditDialog } = useDialog<InstanceType<typeof MenuFormDialog>>()
 
 const { queryMenuList, handleSeach, pagination, menuList, total } = useReqMenu()
 

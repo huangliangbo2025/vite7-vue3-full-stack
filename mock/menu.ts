@@ -36,7 +36,7 @@ export default [
             icon: '@word',
             parentId: null,
             sort: '@integer(1, 100)',
-            'status|1': [1, 0],
+            'enabled|1': [1, 0],
             remark: '@sentence',
             buttons: [],
             createTime: '@datetime("yyyy-MM-dd HH:mm:ss")', // 创建时间

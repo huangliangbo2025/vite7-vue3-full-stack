@@ -1,5 +1,11 @@
-export const useDialog = () => {
-  const dialogRef = ref('dialogRef')
+interface DialogMethods {
+  open?: (...args: any[]) => void
+  openEdit?: (...args: any[]) => void
+  openDetail?: (...args: any[]) => void
+}
+
+export const useDialog = <T extends ComponentPublicInstance & DialogMethods>() => {
+  const dialogRef = useTemplateRef<T>('dialogRef')
   const dialogVisible = ref(false)
   const openDialog = (...reset: any) => {
     if (dialogRef.value && typeof (dialogRef.value as any).open === 'function')
