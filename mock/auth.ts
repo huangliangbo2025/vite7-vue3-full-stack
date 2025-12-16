@@ -1,6 +1,7 @@
 // mock/index.ts
 import { v4 as uuidv4 } from 'uuid'
 import type { MockMethod } from 'vite-plugin-mock'
+import { getMenuList } from './mock.data'
 import { createErrorResponse, createResponse } from './util'
 
 export default [
@@ -17,6 +18,7 @@ export default [
           ...body,
           role: ['admin'],
           avatar: 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png',
+          menus: getMenuList(),
         })
       } else {
         return createErrorResponse('正确的账号密码是:admin/admin', 0)

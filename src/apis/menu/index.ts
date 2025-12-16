@@ -1,4 +1,3 @@
-import type { PaginatedRequest } from '@/apis/httpClient'
 import { httpClient } from '@/apis/httpClient'
 import type { AxiosRequestConfig } from 'axios'
 import type { CreateMenuDto, MenuDto } from './type'
@@ -11,7 +10,7 @@ export const createMenuApi = (data: CreateMenuDto) =>
 
 /* 更新角色 */
 export const updateMenuApi = (
-  data: CreateMenuDto & { id: MenuDto['id'] },
+  data: CreateMenuDto,
   config: AxiosRequestConfig = {},
 ) => httpClient.put<CreateMenuDto>('/api/menu/update', data, config)
 
@@ -20,8 +19,8 @@ export const deleteMenuApi = (id: MenuDto['id']) =>
   httpClient.delete<CreateMenuDto>(`/api/menu/delete/${id}`)
 
 /* 查询角色列表 */
-export const queryMenuListApi = (params: PaginatedRequest, config: AxiosRequestConfig = {}) =>
-  httpClient.getPaginated<MenuDto>(`/api/menu/list`, params, config)
+export const queryMenuListApi = (params: any, config: AxiosRequestConfig = {}) =>
+  httpClient.get<MenuDto[]>(`/api/menu/list`, params, config)
 
 /* 查询角色详情 */
 export const queryMenuDetailApi = (id: MenuDto['id']) =>

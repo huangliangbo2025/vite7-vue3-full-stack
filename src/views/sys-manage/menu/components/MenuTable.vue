@@ -18,9 +18,8 @@ const columns: TableColumn[] = [
     prop: 'path'
   },
   {
-    label: '备注',
-    prop: 'remark',
-    ellipsis: true
+    label: '图标',
+    prop: 'icon'
   },
   {
     label: '创建时间',
@@ -32,11 +31,7 @@ const columns: TableColumn[] = [
     prop: 'createTime',
     width: 180
   },
-  {
-    label: '按钮',
-    prop: 'buttons',
-    width: 80
-  },
+
   {
     label: '状态',
     prop: 'enabled',
@@ -51,16 +46,25 @@ const columns: TableColumn[] = [
 </script>
 
 <template>
-  <TheTable :columns="columns" v-bind="$attrs" style="width: 100%">
-    <template #buttons="{ row }">
-      <el-link type="primary" class="text-12px!" @click="emit('edit', row)"> 查看 </el-link>
+  <TheTable
+    :columns="columns"
+    style="width: 100%"
+    :default-expand-all="true"
+    row-key="id"
+    :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
+    border
+    v-bind="$attrs"
+  >
+    <template #icon="{ row }">
+      <div class="text-primary">
+        <svg-icon size="30" :name="row.icon" />
+      </div>
     </template>
     <template #enabled="{ row }">
       <el-switch v-model="row.enabled" :active-value="1" :inactive-value="0" />
     </template>
     <template #operate="{ row }">
       <el-space>
-        <el-link type="primary" class="text-12px!" @click="emit('edit', row)"> 添加按钮 </el-link>
         <el-link type="primary" :underline="false" @click="emit('edit', row)">
           <el-icon :size="20">
             <Edit />

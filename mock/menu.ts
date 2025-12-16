@@ -1,6 +1,7 @@
 // mock/index.ts
 import Mock from 'mockjs'
 import type { MockMethod } from 'vite-plugin-mock'
+import { getMenuList } from './mock.data.ts'
 import { createResponse } from './util'
 
 export default [
@@ -28,21 +29,7 @@ export default [
     timeout: 1000, // 模拟延迟
     response: (request: any) =>
       createResponse(
-        Mock.mock({
-          'list|10': [{
-            id: '@id',
-            title: '@cname',
-            path: '@url',
-            icon: '@word',
-            parentId: null,
-            sort: '@integer(1, 100)',
-            'enabled|1': [1, 0],
-            remark: '@sentence',
-            buttons: [],
-            createTime: '@datetime("yyyy-MM-dd HH:mm:ss")', // 创建时间
-            updateTime: '@datetime("yyyy-MM-dd HH:mm:ss")', // 更新时间
-          }],
-        }),
+        Mock.mock(getMenuList()),
         request,
       ),
   },

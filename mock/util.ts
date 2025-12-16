@@ -12,6 +12,15 @@ export function createResponse(data: any, res?: any) {
       },
     }
   }
+
+  if (Array.isArray(data)) {
+    return {
+      code: 1,
+      message: 'success',
+      data,
+    }
+  }
+
   return {
     code: 1,
     message: 'success',

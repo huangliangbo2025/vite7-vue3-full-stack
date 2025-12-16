@@ -1,6 +1,5 @@
 import type { CreateMenuDto, MenuDto } from '@/apis/menu'
 import { createMenuApi, deleteMenuApi, queryMenuListApi, updateMenuApi } from '@/apis/menu'
-import { usePagination } from '@/hooks/usePagination'
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from '@tanstack/vue-query'
 
 interface Attrs {
@@ -17,12 +16,8 @@ export const useReqMenu = (attrs: Attrs = {}) => {
 
   const queryClient = useQueryClient()
 
-  const {
-    pagination,
-    ...resetPage
-  } = usePagination()
   const searchMenusParams = shallowRef<Partial<MenuDto>>({})
-  const handleSeach = (params: Partial<MenuDto>) => {
+  const handleSearch = (params: Partial<MenuDto>) => {
     searchMenusParams.value = params
   }
 
@@ -30,8 +25,6 @@ export const useReqMenu = (attrs: Attrs = {}) => {
   const queryKey = computed(() => [
     reqKey,
     searchMenusParams.value,
-    pagination.pageSize,
-    pagination.currentPage,
   ])
 
   // 获取用户列表接口
@@ -39,15 +32,17 @@ export const useReqMenu = (attrs: Attrs = {}) => {
     queryKey,
     queryFn: () => {
       return queryMenuListApi({
-        ...toRaw(pagination),
         ...searchMenusParams.value,
       })
     },
     placeholderData: keepPreviousData,
   })
 
-  const menuList = computed(() => queryMenuList.data.value?.list || [])
-  const total = computed(() => queryMenuList.data.value?.total || 0)
+  watch(() => queryMenuList.data.value, () => {
+    console.log('123131', queryMenuList.data.value)
+  })
+
+  const menuList = computed(() => queryMenuList.data.value || [])
 
   // 创建用户接口
   const createMenuMutation = useMutation({
@@ -88,14 +83,11 @@ export const useReqMenu = (attrs: Attrs = {}) => {
   })
 
   return {
-    pagination,
-    total,
-    ...resetPage,
     menuList,
     queryMenuList,
     createMenuMutation,
     updateMenuMutation,
     deleteMenuMutation,
-    handleSeach,
+    handleSearch,
   }
 }

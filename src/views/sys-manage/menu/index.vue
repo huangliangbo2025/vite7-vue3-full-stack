@@ -5,7 +5,7 @@ import { useReqMenu } from './hooks'
 
 const { dialogRef, openDialog, openEditDialog } = useDialog<InstanceType<typeof MenuFormDialog>>()
 
-const { queryMenuList, handleSeach, pagination, menuList, total } = useReqMenu()
+const { queryMenuList, handleSearch, menuList } = useReqMenu()
 
 const { isFetching } = queryMenuList
 </script>
@@ -22,7 +22,7 @@ const { isFetching } = queryMenuList
     <el-card>
       <template #header>
         <div class="flex flex-wrap items-end justify-between gap-5">
-          <FilterMenuSearch @search="handleSeach" />
+          <FilterMenuSearch @search="handleSearch" />
           <el-button type="primary" @click="openDialog">
             <template #icon>
               <el-icon-plus />
@@ -32,18 +32,8 @@ const { isFetching } = queryMenuList
         </div>
       </template>
       <MenuTable v-loading="isFetching" :data="menuList" @edit="openEditDialog" />
-      <div class="mt-20px flex justify-end">
-        <el-pagination
-          v-model:current-page="pagination.currentPage"
-          v-model:page-size="pagination.pageSize"
-          :page-sizes="[10, 20, 50, 100]"
-          :pager-count="7"
-          :total="total"
-          background
-          layout="total, sizes, prev, pager, next"
-        />
-      </div>
-      <MenuFormDialog ref="dialogRef" />
+
+      <MenuFormDialog ref="dialogRef" :menuList="menuList" />
     </el-card>
   </div>
 </template>

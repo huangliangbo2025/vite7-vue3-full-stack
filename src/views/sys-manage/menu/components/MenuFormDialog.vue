@@ -1,10 +1,22 @@
 <script setup lang="ts">
 import type { FormRules } from 'element-plus'
-import type { CreateMenuDto } from '@/apis/menu'
+import type { CreateMenuDto, MenuDto } from '@/apis/menu'
 import { useForm } from '@/hooks/useForm'
 import { useReqRoles } from '../../role/hooks'
 import { useReqMenu } from '../hooks'
-import { QuestionFilled } from '@element-plus/icons-vue'
+import { Delete, Plus, QuestionFilled } from '@element-plus/icons-vue'
+import { MenuIcon } from '@/assets/icons'
+import routerMapList from '@/imported-routes-map'
+import { buildRouteTree } from '../helper'
+
+interface Props {
+  menuList: MenuDto[]
+}
+
+const { menuList = [] } = defineProps<Props>()
+
+// 菜单路径列表
+const menuPathTreeData = buildRouteTree(Object.keys(routerMapList))
 
 const visible = ref(false)
 
@@ -72,6 +84,16 @@ const onSubmit = async () => {
   mutate({ ...form.value })
 }
 
+// 2. 字段映射配置：告诉组件你的字段对应关系
+const treeSelectProps = ref({
+  label: 'title', // 组件显示的文本 → 你的 title 字段
+  children: 'children', // 子节点字段 → 你的 children 字段（如果字段名不同，这里改）
+  disabled: (node: any) => {
+    // 自定义禁用逻辑：disabled 为 true 或 enabled 为 0 时禁用
+    return node.disabled || node.enabled === 0
+  }
+})
+
 defineExpose({
   open,
   close,
@@ -80,18 +102,18 @@ defineExpose({
 </script>
 
 <template>
-  <el-dialog v-model="visible" title="新增菜单" :width="720" @close="handleClose">
+  <el-dialog v-model="visible" title="新增菜单" :width="600" @close="handleClose">
     <template #title>
-      <h3>
+      <div>
         <span>新增菜单</span>
-        <el-popover :width="1000" trigger="hover">
+        <el-popover :width="1000" trigger="click">
           <template #reference>
             <el-icon class="text-warning cursor-pointer"><question-filled /></el-icon>
           </template>
           <template #default>
-            <div class="overflow-y-auto p-5">
+            <div class="h-160 overflow-y-auto p-5">
               <p class="text-dark mb-3">
-                前端会通过一个脚本，会生成一个路由映射的文件（src/router-map）,例如：
+                前端会通过一个脚本(scripts/auto-import-routes.js)，会生成一个路由映射的文件（src/imported-routes-map.ts）,例如：
               </p>
               <p class="mb-3">
                 <HighlightCode
@@ -135,51 +157,90 @@ export default {
             </div>
           </template>
         </el-popover>
-      </h3>
+      </div>
     </template>
 
     <div v-if="visible">
-      <el-form ref="formRef" :model="form" :rules="rules" label-width="auto" label-position="top">
+      <el-form ref="formRef" :model="form" :rules="rules" label-width="auto">
         <el-form-item prop="parentId" label="父级菜单">
-          <el-input v-model="form.parentId" />
-        </el-form-item>
-        <el-form-item prop="path" label="菜单路径（和前端路径要匹配）">
-          <el-input v-model="form.path" />
+          <el-tree-select
+            placeholder="请选择"
+            v-model="form.parentId"
+            :data="menuList"
+            node-key="id"
+            value-id="title"
+            :render-after-expand="false"
+            style="width: 100%"
+            clearable
+            :treeSelectProps="treeSelectProps"
+            :props="{
+              label: 'title'
+            }"
+          />
         </el-form-item>
         <el-form-item prop="title" label="菜单名称">
-          <el-input v-model="form.title" />
+          <el-input v-model="form.title" placeholder="请输入" />
         </el-form-item>
-        <el-row :gutter="20">
-          <el-col :span="12">
-            <el-form-item prop="icon" label="图标" label-position="right"> </el-form-item>
-          </el-col>
-          <el-col :span="12">
-            <el-form-item prop="order" label="排序" label-position="right">
-              <el-input-number v-model="form.order" />
-            </el-form-item>
-          </el-col>
-        </el-row>
-        <el-row :gutter="20">
-          <el-col :span="12">
-            <el-form-item
-              prop="hidden"
-              label="是否隐藏（在菜单栏中将不会展示）"
-              label-position="right"
-            >
-              <el-checkbox v-model="form.hidden" />
-            </el-form-item>
-          </el-col>
-          <el-col :span="12">
-            <el-form-item prop="isLogin" label="是否需要登录验证" label-position="right">
-              <el-checkbox v-model="form.isLogin" />
-            </el-form-item>
-          </el-col>
-        </el-row>
-        <el-form-item
-          prop="permissions"
-          label="权限(按钮的话，配合v-permission使用，接口的话，根据需求修改axios的封装)"
-        >
-          <!-- <el-input v-model="form.permissions" /> -->
+        <el-form-item prop="path" label="路由路径">
+          <el-tree-select
+            placeholder="请选择"
+            v-model="form.path"
+            :data="menuPathTreeData"
+            :render-after-expand="false"
+            style="width: 100%"
+            clearable
+          />
+        </el-form-item>
+        <el-form-item prop="icon" label="图标">
+          <el-popover :width="360">
+            <template #reference>
+              <el-input class="w-full" v-model="form.icon" clearable />
+            </template>
+            <el-space :size="20" :wrap="true" class="px-2 py-3">
+              <div
+                class="hover:text-primary cursor-pointer"
+                :class="{ 'text-primary': form.icon === icon }"
+                v-for="icon in MenuIcon"
+                :key="icon"
+                @click="form.icon = icon"
+              >
+                <svg-icon size="30" :name="icon" />
+              </div>
+            </el-space>
+          </el-popover>
+        </el-form-item>
+        <el-form-item prop="order" label="排序">
+          <el-space>
+            <el-input-number v-model="form.order" />
+            <span class="text-12px">序号越大越靠前</span>
+          </el-space>
+        </el-form-item>
+        <el-form-item prop="hidden" label="是否隐藏">
+          <el-radio-group v-model="form.hidden">
+            <el-radio :value="true">是</el-radio>
+            <el-radio :value="false">否</el-radio>
+          </el-radio-group>
+        </el-form-item>
+        <el-form-item prop="isLogin" label="登录验证">
+          <el-radio-group v-model="form.isLogin">
+            <el-radio :value="true">是</el-radio>
+            <el-radio :value="false">否</el-radio>
+          </el-radio-group>
+        </el-form-item>
+        <el-form-item prop="keepAlive" label="是否缓存">
+          <el-radio-group v-model="form.keepAlive">
+            <el-radio :value="true">是</el-radio>
+            <el-radio :value="false">否</el-radio>
+          </el-radio-group>
+        </el-form-item>
+        <el-form-item prop="disabled" label="禁止点击">
+          <el-radio-group v-model="form.disabled">
+            <el-radio :value="true">是</el-radio>
+            <el-radio :value="false">否</el-radio>
+          </el-radio-group>
+        </el-form-item>
+        <el-form-item prop="enabled" label="状态">
+          <el-switch v-model="form.enabled" :active-value="1" :inactive-value="0"></el-switch>
         </el-form-item>
       </el-form>
     </div>
