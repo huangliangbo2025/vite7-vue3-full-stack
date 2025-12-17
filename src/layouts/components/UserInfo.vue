@@ -2,6 +2,7 @@
 import { storeToRefs } from 'pinia'
 import { useTemplateRef } from 'vue'
 import { useAuthStore } from '@/stores'
+import { removeRoutes } from '@/router'
 
 const router = useRouter()
 
@@ -17,6 +18,7 @@ const onClickOutside = () => {
 
 const loginOut = () => {
   clearUserInfo()
+  removeRoutes()
   router.push('/auth/login')
 }
 </script>
@@ -32,14 +34,7 @@ const loginOut = () => {
       <el-avatar class="h-32px w-32px" :src="avatar" />
     </div>
 
-    <el-popover
-      ref="popoverRef"
-      trigger="click"
-      virtual-triggering
-      persistent
-      width="240"
-      v-click-outside="onClickOutside"
-    >
+    <el-popover ref="popoverRef" trigger="click" virtual-triggering persistent width="240">
       <el-row align="middle">
         <el-col :span="24">
           <div class="flex items-center gap-3">

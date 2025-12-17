@@ -27,4 +27,15 @@ app.use(VueQueryPlugin, { queryClient })
 Object.values(import.meta.glob<{ install: UserModule }>('./modules/*.ts', { eager: true }))
   .forEach(i => i.install?.({ app, router }))
 
+// 全局混入：自动给路由组件注入 name = route.name
+/* app.mixin({
+  beforeMount() {
+    const route = this.$route
+    // 仅对路由组件生效，且未手动设置 name 时注入
+    if (route.name && !this.$options.name) {
+      this.$options.name = route.name // 核心：路由 name → 组件 name
+    }
+  }
+}) */
+
 app.mount('#app')

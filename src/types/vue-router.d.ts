@@ -19,5 +19,7 @@ declare module 'vue-router' {
     disabled: boolean
     // 权限
     permissions?: string[]
+    // 维持高亮
+    activeMenu?: string
   }
 }

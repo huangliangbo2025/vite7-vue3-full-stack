@@ -152,7 +152,7 @@ async function generateRouteMap() {
 // 忽略目录: ${ignorePatterns.join(', ')}
 
 export default {
-${sortedKeys.map(key => `  '${key}': ${routeMap[key]}`).join(',\n')}
+${sortedKeys.map(key => `  '${key}': () => ${routeMap[key]}`).join(',\n')}
 }
 `
 

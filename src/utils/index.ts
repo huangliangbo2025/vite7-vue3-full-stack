@@ -1,3 +1,3 @@
+export * from './form-validate'
 export * from './is'
 export * from './request'
-export * from './route'

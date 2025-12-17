@@ -21,7 +21,7 @@ export const getMenuList = () => [
   {
     id: 'menu_10002',
     parentId: '',
-    path: '/system',
+    path: '/sys-manage',
     title: '系统管理',
     icon: 'Setting',
     order: 2,
@@ -29,7 +29,7 @@ export const getMenuList = () => [
     hidden: false,
     isLogin: true,
     disabled: false,
-    permissions: ['system:view'],
+    permissions: ['sys-manage:view'],
     enabled: 1,
     createTime: Mock.mock('@datetime("yyyy-MM-dd HH:mm:ss")'),
     updateTime: Mock.mock('@datetime("yyyy-MM-dd HH:mm:ss")'),
@@ -37,7 +37,7 @@ export const getMenuList = () => [
       {
         id: 'menu_10003',
         parentId: 'menu_10002',
-        path: '/system/menu',
+        path: '/sys-manage/menu',
         title: '菜单管理',
         icon: 'Menu',
         order: 1,
@@ -45,7 +45,7 @@ export const getMenuList = () => [
         hidden: false,
         isLogin: true,
         disabled: false,
-        permissions: ['system:menu:view', 'system:menu:edit', 'system:menu:delete'],
+        permissions: ['sys-manage:menu:view', 'sys-manage:menu:edit', 'sys-manage:menu:delete'],
         enabled: 1,
         createTime: Mock.mock('@datetime("yyyy-MM-dd HH:mm:ss")'),
         updateTime: Mock.mock('@datetime("yyyy-MM-dd HH:mm:ss")'),
@@ -54,7 +54,7 @@ export const getMenuList = () => [
       {
         id: 'menu_10004',
         parentId: 'menu_10002',
-        path: '/system/role',
+        path: '/sys-manage/role',
         title: '角色管理',
         icon: 'UserFilled',
         order: 2,
@@ -62,16 +62,16 @@ export const getMenuList = () => [
         hidden: false,
         isLogin: true,
         disabled: false,
-        permissions: ['system:role:view', 'system:role:edit'],
+        permissions: ['sys-manage:role:view', 'sys-manage:role:edit'],
         enabled: 1,
         createTime: Mock.mock('@datetime("yyyy-MM-dd HH:mm:ss")'),
         updateTime: Mock.mock('@datetime("yyyy-MM-dd HH:mm:ss")'),
         children: [],
       },
-      {
+      /* {
         id: 'menu_10005',
         parentId: 'menu_10002',
-        path: '/system/permission',
+        path: '/sys-manage/permission',
         title: '权限配置',
         icon: 'Lock',
         order: 3,
@@ -79,15 +79,15 @@ export const getMenuList = () => [
         hidden: false,
         isLogin: true,
         disabled: true,
-        permissions: ['system:permission:view'],
+        permissions: ['sys-manage:permission:view'],
         enabled: 0,
         createTime: Mock.mock('@datetime("yyyy-MM-dd HH:mm:ss")'),
         updateTime: Mock.mock('@datetime("yyyy-MM-dd HH:mm:ss")'),
         children: [],
-      },
+      }, */
     ],
   },
-  {
+  /*  {
     id: 'menu_10006',
     parentId: '',
     path: '/user/profile',
@@ -121,5 +121,5 @@ export const getMenuList = () => [
         children: [],
       },
     ],
-  },
+  }, */
 ]

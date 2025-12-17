@@ -13,7 +13,7 @@ const keepAliveComponents = computed(
   () =>
     router
       .getRoutes()
-      .filter((item) => item.meta && item.name && item.meta.isCache)
+      .filter((item) => item.meta && item.name && item.meta.keepAlive)
       .map((item) => item.name) as string[]
 )
 

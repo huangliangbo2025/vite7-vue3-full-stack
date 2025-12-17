@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { generateMenuData } from '@/utils'
 import { RouteView, Menus, Header } from './components'
-import { permissionsRoutes } from '@/router'
 
-const menuData = computed(() => generateMenuData(permissionsRoutes))
+const menuData = computed(() => [])
 </script>
 
 <template>

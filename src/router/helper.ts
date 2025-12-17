@@ -1,5 +1,6 @@
 import { isExternal } from '@/utils/is'
 import type { Router, RouteRecordRaw } from 'vue-router'
+import { errorRoutes } from './modules'
 
 export class RouterHandle {
   private removeRouteGroup: Array<() => void> = []
@@ -10,7 +11,7 @@ export class RouterHandle {
 
   addRoutes = (dynamicRoutes: RouteRecordRaw[]) => {
     try {
-      dynamicRoutes.forEach((route) => {
+      ;[...dynamicRoutes, ...errorRoutes].forEach((route) => {
         if (this.isValidRoute(route)) {
           const removeRoute = this.router.addRoute(route)
           this.removeRouteGroup.push(removeRoute)
