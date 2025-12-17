@@ -2,10 +2,11 @@
 import { useAuthStore } from '@/stores'
 import { RouteView, Menus, Header } from './components'
 import { storeToRefs } from 'pinia'
+import { sortMenuTree } from '@/utils/menu'
 
 const { menus } = storeToRefs(useAuthStore())
 
-const menuData = computed(() => menus.value)
+const menuData = computed(() => sortMenuTree(menus.value))
 </script>
 
 <template>
