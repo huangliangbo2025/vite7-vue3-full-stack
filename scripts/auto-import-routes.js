@@ -132,7 +132,7 @@ async function generateRouteMap() {
     files.forEach(file => {
       const routeKey = generateRouteKey(file)
       const importPath = `@/views/${file.replace(/\\/g, '/')}` // 统一路径分隔符
-      routeMap[routeKey] = `import('${importPath}')`
+      routeMap[routeKey] = `() => import('${importPath}')`
     })
 
     // 再处理目录：生成 undefined 映射（仅当路由键未被文件占用时）
@@ -152,7 +152,7 @@ async function generateRouteMap() {
 // 忽略目录: ${ignorePatterns.join(', ')}
 
 export default {
-${sortedKeys.map(key => `  '${key}': () => ${routeMap[key]}`).join(',\n')}
+${sortedKeys.map(key => `  '${key}': ${routeMap[key]}`).join(',\n')}
 }
 `
 
