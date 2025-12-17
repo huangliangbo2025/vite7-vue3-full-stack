@@ -21,7 +21,7 @@ export const useReqLogin = () => {
       // 4.2 全局提示
       ElMessage.success(`欢迎回来，${res.username}！`)
       // 4.3 跳转首页（根据实际路由调整）
-      router.push('/')
+      router.push('/dashboard')
     },
 
     // 请求失败回调（统一错误处理）

@@ -31,5 +31,3 @@ const errorModules = import.meta.glob(`./error/*.ts`, {
 export const permissionsRoutes = getRouters(permissionsModules)
 export const authRoutes = getRouters(authModules)
 export const errorRoutes = getRouters(errorModules)
-
-console.log('permissionsRoutes:', permissionsRoutes)

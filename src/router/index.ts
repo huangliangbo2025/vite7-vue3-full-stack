@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { RouterHandle } from './helper'
 import { authRoutes, errorRoutes } from './modules/index'
 
-const routes = [...authRoutes]
+const routes = [...authRoutes, { path: '/', redirect: '/dashboard' }]
 
 const router = createRouter({
   history: createWebHistory(),
