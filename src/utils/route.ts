@@ -1,5 +1,5 @@
 import type { MenuDto } from '@/apis/menu'
-import importedRoutes from '@/imported-routes'
+import importedRoutes from '@/imported-routes-map'
 import { BasicLayout } from '@/layouts'
 
 import type { RouteMeta, RouteRecordRaw } from 'vue-router'

@@ -6,7 +6,7 @@ import { useReqRoles } from '../../role/hooks'
 import { useReqMenu } from '../hooks'
 import { Delete, Plus, QuestionFilled } from '@element-plus/icons-vue'
 import { MenuIcon } from '@/assets/icons'
-import routerMapList from '@/imported-routes-map'
+import routerMapList from '@/imported-routes-map-map'
 import { buildRouteTree } from '../helper'
 
 interface Props {
@@ -113,13 +113,13 @@ defineExpose({
           <template #default>
             <div class="h-160 overflow-y-auto p-5">
               <p class="text-dark mb-3">
-                前端会通过一个脚本(scripts/auto-import-routes.js)，会生成一个路由映射的文件（src/imported-routes-map.ts）,例如：
+                前端会通过一个脚本(scripts/auto-import-routes.js)，会生成一个路由映射的文件（src/imported-routes-map-map.ts）,例如：
               </p>
               <p class="mb-3">
                 <HighlightCode
                   :language="'javascript'"
                   :code="`// 每次新增路由，都应当运行一下pnpm dev触发路由生成脚本
-export default { 
+export default {
     '/dashboard': import('@/views/dashboard/index.vue'),
     '/sys-manage/user': import('@/views/sys-manage/user/index.vue'),
     '/sys-manage/menu': import('@/views/sys-manage/user/index.vue'),

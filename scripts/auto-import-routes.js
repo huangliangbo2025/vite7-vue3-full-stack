@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename)
 
 // 配置
 const viewsDir = path.resolve(__dirname, '../src/views') // views目录路径
-const outputFile = path.resolve(__dirname, '../src/imported-routes.ts') // 输出文件路径
+const outputFile = path.resolve(__dirname, '../src/imported-routes-map.ts') // 输出文件路径
 
 // 需要忽略的目录/文件模式
 const ignorePatterns = [
