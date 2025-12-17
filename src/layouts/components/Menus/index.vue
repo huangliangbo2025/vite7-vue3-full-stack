@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import type { RouteRecordRaw } from 'vue-router'
 import { ElMenu } from 'element-plus'
 import { computed, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { isExternal } from '@/utils/is'
 import MenuItem from './MenuItem.vue'
+import type { MenuDto } from '@/apis/menu'
 
 // 属性定义
 interface Props {
-  menuData: RouteRecordRaw[]
+  menuData: MenuDto[]
   collapse?: boolean
   mode?: 'horizontal' | 'vertical'
 }
@@ -58,7 +58,7 @@ const handleMenuSelect = (index: string) => {
       :mode="mode"
       @select="handleMenuSelect"
     >
-      <MenuItem v-for="item in menuData" :key="item.name" :item="item" />
+      <MenuItem v-for="item in menuData" :key="item.id" :item="item" />
     </ElMenu>
   </div>
 </template>

@@ -1,12 +1,12 @@
 <!-- MenuItem.vue -->
 <script setup lang="ts">
-import type { RouteRecordRaw } from 'vue-router'
 import { ElMenuItem, ElSubMenu } from 'element-plus'
 import { computed } from 'vue'
 import MenuItemContent from './MenuItemContent.vue'
+import type { MenuDto } from '@/apis/menu'
 
 interface Props {
-  item: RouteRecordRaw
+  item: MenuDto
 }
 
 const { item } = defineProps<Props>()
@@ -24,14 +24,14 @@ const hasChildren = computed(() => {
     </template>
     <MenuItem
       v-for="child in item.children"
-      :key="child.name"
+      :key="child.id"
       :item="child"
-      :disabled="item.meta?.disabled"
+      :disabled="item.disabled"
     />
   </ElSubMenu>
 
   <!-- 没有子菜单的情况 -->
-  <ElMenuItem v-else :index="item.path" :disabled="item.meta?.disabled">
+  <ElMenuItem v-else :index="item.path" :disabled="item.disabled">
     <MenuItemContent :item="item" />
   </ElMenuItem>
 </template>

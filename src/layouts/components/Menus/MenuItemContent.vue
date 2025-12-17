@@ -1,10 +1,10 @@
 <!-- MenuItemContent.vue -->
 <script setup lang="ts">
-import type { RouteRecordRaw } from 'vue-router'
 import { isExternal } from '@/utils/is'
+import type { MenuDto } from '@/apis/menu'
 
 interface Props {
-  item: RouteRecordRaw
+  item: MenuDto
 }
 
 defineProps<Props>()
@@ -13,19 +13,16 @@ defineProps<Props>()
 <template>
   <div class="menu-item-content">
     <span
-      v-if="!item.meta?.disabled"
+      v-if="!item.disabled"
       class="menu-icon text-center"
       :class="{
-        'text-10px!': !item.meta?.icon
+        'text-10px!': !item.icon
       }"
     >
-      <svg-icon :name="item.meta?.icon || 'menu-icon-default'" />
+      <svg-icon :name="item.icon || 'menu-icon-default'" />
     </span>
-    <span class="menu-title">{{ item.meta?.title }}</span>
-    <i
-      v-if="isExternal((item.redirect as string) || item.path)"
-      class="external-link-icon el-icon-link"
-    />
+    <span class="menu-title">{{ item.title }}</span>
+    <i v-if="isExternal(item.path)" class="external-link-icon el-icon-link" />
   </div>
 </template>
 

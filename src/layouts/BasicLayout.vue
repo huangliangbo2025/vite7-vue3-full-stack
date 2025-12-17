@@ -1,7 +1,11 @@
 <script setup lang="ts">
+import { useAuthStore } from '@/stores'
 import { RouteView, Menus, Header } from './components'
+import { storeToRefs } from 'pinia'
 
-const menuData = computed(() => [])
+const { menus } = storeToRefs(useAuthStore())
+
+const menuData = computed(() => menus.value)
 </script>
 
 <template>

@@ -153,7 +153,7 @@ async function generateRouteMap() {
 
 export default {
 ${sortedKeys.map(key => `  '${key}': ${routeMap[key]}`).join(',\n')}
-}
+} as Record<string, any>
 `
 
     // 6. 写入文件

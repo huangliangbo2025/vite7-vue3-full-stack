@@ -37,7 +37,11 @@ export function convertPathToPascalCase(path: string): string {
     return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
   })
 
-  return pascalCaseWords.join('')
+  const v = pascalCaseWords.join('')
+
+  console.log('---path--', path, v)
+
+  return v
 }
 
 const loadView = (key: string) => {
