@@ -20,6 +20,12 @@ const handleMenuSelect = (menuItem: MenuDto) => {
 
 <template>
   <div class="page-container">
+    <div class="mb-5">
+      <p class="text-info">您可以进入角色权限界面，对权限操作进行分配</p>
+      <p class="text-[var(--el-color-danger)]">
+        注意，菜单和权限是两个不同的概念，菜单是前端展示的内容，而权限是后端控制访问的依据
+      </p>
+    </div>
     <el-row :gutter="20">
       <el-col :sm="8" :md="8" :lg="6">
         <el-card>

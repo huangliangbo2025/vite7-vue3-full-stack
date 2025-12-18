@@ -27,8 +27,8 @@ const columns: TableColumn[] = [
     width: 180
   },
   {
-    label: '创建时间',
-    prop: 'createTime',
+    label: '更新时间',
+    prop: 'updateTime',
     width: 180
   },
   {
