@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
-import { useTemplateRef } from 'vue'
 import { useAuthStore } from '@/stores'
 import { removeRoutes } from '@/router'
+import type { PopoverInstance } from 'element-plus'
 
 const router = useRouter()
 
@@ -11,9 +11,10 @@ const avatar = 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.
 const { clearUserInfo } = useAuthStore()
 const { token, userInfo } = storeToRefs(useAuthStore())
 const isLogin = computed(() => !!token.value)
+const buttonRef = ref()
 const popoverRef = useTemplateRef('popoverRef')
 const onClickOutside = () => {
-  popoverRef.value!.hide()
+  popoverRef.value?.hide()
 }
 
 const loginOut = () => {
@@ -30,11 +31,21 @@ const loginOut = () => {
   </el-space>
 
   <template v-else>
-    <div v-popover="popoverRef" class="flex-center gap-3px flex cursor-pointer items-center">
+    <div
+      ref="buttonRef"
+      v-click-outside="onClickOutside"
+      class="flex-center gap-3px flex cursor-pointer items-center"
+    >
       <el-avatar class="h-32px w-32px" :src="avatar" />
     </div>
 
-    <el-popover ref="popoverRef" trigger="click" virtual-triggering persistent width="240">
+    <el-popover
+      ref="popoverRef"
+      :virtual-ref="buttonRef"
+      trigger="click"
+      virtual-triggering
+      width="240"
+    >
       <el-row align="middle">
         <el-col :span="24">
           <div class="flex items-center gap-3">
