@@ -15,6 +15,9 @@ export const install: UserModule = ({ app, router }) => {
     const { token, menus } = useAuthStore()
 
     if (!token) {
+      if (to.path === '/auth/login')
+        isRouteInited = false
+
       // 无需登录验证
       if (to.meta?.noLogin) {
         next()

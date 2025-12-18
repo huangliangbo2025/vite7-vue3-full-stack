@@ -6,6 +6,7 @@ export interface CreatePermissionDto {
 }
 
 export interface PermissionDto extends CreatePermissionDto {
+  menuId: string
   id: string
   createTime: string
   updateTime: string

@@ -9,33 +9,27 @@ const emit = defineEmits<{
 
 const columns: TableColumn[] = [
   {
-    label: '菜单名称',
-    prop: 'title',
+    label: '权限名称',
+    prop: 'name',
     width: 120
   },
   {
-    label: '菜单路径',
-    prop: 'path'
+    label: '权限标识码',
+    prop: 'code'
   },
   {
-    label: '图标',
-    prop: 'icon'
-  },
-  {
-    label: '创建时间',
-    prop: 'createTime',
-    width: 180
+    label: '权限备注',
+    prop: 'description'
   },
   {
     label: '创建时间',
     prop: 'createTime',
     width: 180
   },
-
   {
-    label: '状态',
-    prop: 'enabled',
-    width: 80
+    label: '创建时间',
+    prop: 'createTime',
+    width: 180
   },
   {
     label: '操作',
@@ -55,14 +49,6 @@ const columns: TableColumn[] = [
     border
     v-bind="$attrs"
   >
-    <template #icon="{ row }">
-      <div class="text-primary">
-        <svg-icon size="30" :name="row.icon" />
-      </div>
-    </template>
-    <template #enabled="{ row }">
-      <el-switch v-model="row.enabled" :active-value="1" :inactive-value="0" />
-    </template>
     <template #operate="{ row }">
       <el-space>
         <el-link type="primary" :underline="false" @click="emit('edit', row)">
