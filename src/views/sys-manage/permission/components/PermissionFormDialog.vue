@@ -10,7 +10,7 @@ const initializeForm: CreatePermissionDto = {
   id: undefined,
   name: '',
   code: '',
-  description: ''
+  remark: ''
 }
 // 表单数据
 const form = ref<CreatePermissionDto>({ ...initializeForm })
@@ -83,8 +83,8 @@ defineExpose({
         <el-form-item prop="code" label="权限标识码">
           <el-input v-model="form.code" placeholder="请输入" />
         </el-form-item>
-        <el-form-item prop="description" label="权限备注">
-          <el-input v-model="form.description" placeholder="请输入" />
+        <el-form-item prop="remark" label="权限备注">
+          <el-input v-model="form.remark" placeholder="请输入" />
         </el-form-item>
       </el-form>
     </div>

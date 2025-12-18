@@ -19,7 +19,7 @@ const columns: TableColumn[] = [
   },
   {
     label: '权限备注',
-    prop: 'description'
+    prop: 'remark'
   },
   {
     label: '创建时间',

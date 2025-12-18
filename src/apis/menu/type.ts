@@ -20,7 +20,7 @@ export interface CreateMenuDto {
   /* 是否禁止点击 */
   disabled: boolean
   // 权限
-  permissions?: string[]
+  permissions?: Array<{ name: string; code: string; id: string; remark: string }>
   // 是否启用
   enabled: 1 | 0
 }

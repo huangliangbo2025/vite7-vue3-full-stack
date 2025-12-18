@@ -33,12 +33,12 @@ export default [
           'id': '@id', // 随机生成 GUID 或简单 ID（可选字段）
           code: 'sys:user:add',
           name: '新增用户',
-          description: '允许创建系统用户',
+          remark: '允许创建系统用户',
         }, {
           'id': '@id', // 随机生成 GUID 或简单 ID（可选字段）
           code: 'sys:user:edit',
           name: '编辑用户',
-          description: '允许编辑系统用户',
+          remark: '允许编辑系统用户',
         }]),
         request,
       ),

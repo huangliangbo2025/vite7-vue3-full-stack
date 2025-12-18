@@ -5,9 +5,11 @@ interface DialogMethods {
 }
 
 export const useDialog = <T extends ComponentPublicInstance & DialogMethods>() => {
-  const dialogRef = useTemplateRef<T>('dialogRef')
+  const dialogRef = ref<T>()
   const dialogVisible = ref(false)
   const openDialog = (...reset: any) => {
+    console.log('123123', dialogRef.value)
+
     if (dialogRef.value && typeof (dialogRef.value as any).open === 'function')
       (dialogRef.value as any).open(...reset)
     else

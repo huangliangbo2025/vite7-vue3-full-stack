@@ -5,7 +5,9 @@ import { Delete, Edit } from '@element-plus/icons-vue'
 
 const emit = defineEmits<{
   edit: [v: RoleDto]
+  delete: [v: RoleDto]
   view: [v: RoleDto]
+  permission: [v: RoleDto]
 }>()
 
 const columns: TableColumn[] = [
@@ -42,11 +44,8 @@ const columns: TableColumn[] = [
     </template>
     <template #permission="scope">
       <el-space>
-        <el-link :underline="false" type="primary" @click="emit('view', scope.row)">
-          分配菜单权限
-        </el-link>
-        <el-link :underline="false" type="primary" @click="emit('view', scope.row)">
-          绑定按钮权限
+        <el-link :underline="false" type="primary" @click="emit('permission', scope.row)">
+          分配权限
         </el-link>
       </el-space>
     </template>
@@ -57,7 +56,7 @@ const columns: TableColumn[] = [
             <Edit />
           </el-icon>
         </el-link>
-        <el-link :underline="false" type="danger" @click="emit('edit', scope.row)">
+        <el-link :underline="false" type="danger" @click="emit('delete', scope.row)">
           <el-icon :size="16">
             <Delete />
           </el-icon>

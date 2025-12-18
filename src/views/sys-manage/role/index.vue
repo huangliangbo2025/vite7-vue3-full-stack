@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { useDialog } from '@/hooks'
-import { RoleFormDialog, RoleTable } from './components'
+import { RoleFormDialog, RoleTable, AssignPermissionDialog } from './components'
 import { useReqRoles } from './hooks'
 
 const { dialogRef, openDialog, openEditDialog, openDetailDialog } = useDialog()
+const { dialogRef: dialogAssignPermissionRef, openDialog: openAssignPermissionDialog } = useDialog()
 
 const { queryRoleList, pagination, roleList, total } = useReqRoles()
 
@@ -30,7 +31,9 @@ const { isFetching } = queryRoleList
         v-loading="isFetching"
         :data="roleList"
         @edit="openEditDialog"
+        @delete="openDetailDialog"
         @view="openDetailDialog"
+        @permission="openAssignPermissionDialog"
       />
       <div class="mt-20px flex justify-end">
         <el-pagination
@@ -44,6 +47,7 @@ const { isFetching } = queryRoleList
         />
       </div>
       <RoleFormDialog ref="dialogRef" />
+      <AssignPermissionDialog ref="dialogAssignPermissionRef" />
     </el-card>
   </div>
 </template>
