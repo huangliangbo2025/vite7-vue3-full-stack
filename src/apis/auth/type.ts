@@ -1,4 +1,5 @@
 import type { RouteMeta } from 'vue-router'
+import type { MenuDto } from '../menu'
 
 export interface LoginParams {
   username: string
@@ -28,8 +29,8 @@ export interface LoginResponse {
   createTime: string
   nickname: string
   remark: string
-  menuPermissions: string[]
-  buttonPermissions: string[]
+  menus: MenuDto[]
+  permissions: string[]
 }
 
 export interface RegisterParams {
