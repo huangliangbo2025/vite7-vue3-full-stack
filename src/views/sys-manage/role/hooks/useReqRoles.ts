@@ -17,25 +17,16 @@ export const useReqRoles = (attrs: Attrs = {}) => {
 
   const queryClient = useQueryClient()
 
-  const {
-    pagination,
-    ...resetPage
-  } = usePagination()
-
   // 2. 用 computed 包装 queryKey，显式依赖分页参数和搜索参数
   const queryKey = computed(() => [
     reqKey,
-    pagination.pageSize,
-    pagination.currentPage,
   ])
 
   // 获取角色列表接口
   const queryRoleList = useQuery({
     queryKey, // 依赖 roleId，变化时自动重新请求
     queryFn: () => {
-      return queryRoleListApi({
-        ...toRaw(pagination),
-      })
+      return queryRoleListApi({})
     },
     placeholderData: keepPreviousData,
   })
@@ -51,8 +42,7 @@ export const useReqRoles = (attrs: Attrs = {}) => {
     placeholderData: keepPreviousData,
   })
 
-  const roleList = computed(() => queryRoleList.data.value?.list || [])
-  const total = computed(() => queryRoleList.data.value?.total || 0)
+  const roleList = computed(() => queryRoleList.data.value || [])
 
   // 常见角色接口
   const createRoleMutation = useMutation({
@@ -103,9 +93,6 @@ export const useReqRoles = (attrs: Attrs = {}) => {
   })
 
   return {
-    pagination,
-    total,
-    ...resetPage,
     roleList,
     queryRoleList,
     createRoleMutation,

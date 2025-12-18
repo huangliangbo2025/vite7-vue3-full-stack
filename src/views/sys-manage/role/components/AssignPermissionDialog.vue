@@ -1,10 +1,18 @@
 <script setup lang="ts">
+import type { CreateRoleDto, RoleDto } from '@/apis/role'
 import { useReqMenu } from '../../menu/hooks'
 import type { MenuDto } from '@/apis/menu'
+import { pick } from 'lodash-es'
 
 const visible = ref(false)
-const permissions = ref<string[]>([])
-const menuIds = ref<string[]>(['menu_1001', 'menu_2002', 'menu_2003'])
+const formData = reactive<CreateRoleDto>({
+  name: '',
+  code: '',
+  desc: '',
+  permissions: [],
+  menuIds: []
+})
+
 const tableRef = useTemplateRef('tableRef')
 
 const { queryMenuList, menuList } = useReqMenu()
@@ -13,30 +21,33 @@ const { isFetching } = queryMenuList
 // =============  选中菜单变更   ======================
 
 const handleSelectionChange = (menus: MenuDto[]) => {
-  menuIds.value = menus.map((item) => item.id)
+  formData.menuIds = menus.map((item) => item.id)
 }
 
 // =============== 选中权限操作按钮变更  ======================
 
 const onPermissionChange = (isTrue: boolean, code: string) => {
+  let permissions = [...formData.permissions]
+
   if (isTrue && code) {
-    if (!permissions.value.includes(code)) permissions.value.push(code)
+    if (!permissions.includes(code)) permissions.push(code)
   } else if (!isTrue && code) {
-    permissions.value = permissions.value.filter((p) => p !== code)
+    permissions = permissions.filter((p) => p !== code)
   }
-  console.log(isTrue, code)
+
+  formData.permissions = permissions
 }
 
 // ===================  编辑时，菜单勾选框状态回显  ============================
 const selectedRows: MenuDto[] = []
 
-const collectSelectedRows = (rows: MenuDto[]) => {
+const collectSelectedRows = (rows: MenuDto[], menuIds: string[]) => {
   rows.forEach((row) => {
-    if (menuIds.value.includes(row.id)) {
+    if (menuIds.includes(row.id)) {
       selectedRows.push(row)
     }
     if (row.children?.length) {
-      collectSelectedRows(row.children)
+      collectSelectedRows(row.children, menuIds)
     }
   })
 }
@@ -46,7 +57,9 @@ const restoreSelection = async (rows: MenuDto[]) => {
   tableRef.value.clearSelection()
   selectedRows.length = 0
 
-  collectSelectedRows(rows)
+  const menuIds = formData.menuIds
+
+  collectSelectedRows(rows, menuIds)
 
   for (const row of selectedRows) {
     tableRef.value.toggleRowSelection(row, true)
@@ -68,7 +81,8 @@ watch(
 
 // ===============  对话框打开关闭按钮 ========================
 
-const open = () => {
+const open = (record: RoleDto) => {
+  Object.assign(formData, pick(record, ['id', 'code', 'name', 'desc', 'permissions', 'menuIds']))
   visible.value = true
 }
 
@@ -89,7 +103,8 @@ defineExpose({
     <p class="text-#919191 mb-20px">
       给用户设置<em class="text-error">菜单权限</em>以及<em class="text-error">操作权限</em>
     </p>
-    <div>
+    <!--必须加上v-if，要不然回显有问题 -->
+    <div v-if="visible">
       <el-table
         ref="tableRef"
         border
@@ -109,7 +124,7 @@ defineExpose({
               v-for="perItem in row.permissions"
               :key="perItem.id"
               :label="perItem.name"
-              :checked="permissions.includes(perItem.code)"
+              :checked="formData.permissions.includes(perItem.code)"
               @change="(isTrue: any) => onPermissionChange(isTrue, perItem.code)"
             />
           </template>

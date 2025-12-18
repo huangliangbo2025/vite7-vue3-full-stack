@@ -2,12 +2,17 @@
 import type { FormRules } from 'element-plus'
 import { useForm } from '@/hooks/useForm'
 import { useReqRoles } from '../hooks'
+import type { CreateRoleDto } from '@/apis/role'
 
 const visible = ref(false)
+const id = ref<number>()
 // 表单数据
-const form = ref({
+const form = ref<Partial<CreateRoleDto>>({
   name: '',
-  remark: ''
+  code: '',
+  desc: '',
+  permissions: [],
+  menuIds: []
 })
 
 const { isPending, mutate } = useReqRoles({
@@ -23,6 +28,10 @@ const rules: FormRules = {
   name: [
     { required: true, message: '请输入姓名', trigger: 'blur' },
     { min: 2, max: 20, message: '姓名长度在 2 到 20 个字符', trigger: 'blur' }
+  ],
+  code: [
+    { required: true, message: '请输入唯一标识码', trigger: 'blur' },
+    { min: 2, max: 20, message: 'code长度在 2 到 50 个字符', trigger: 'blur' }
   ]
 }
 
@@ -30,68 +39,55 @@ const open = () => {
   visible.value = true
 }
 
-const openEdit = (v: any) => {
+const openEdit = async (v: any) => {
+  const { id: _id, ...reset } = v
   visible.value = true
-  Object.assign(form, v)
-}
-
-const isOnlyView = ref(false)
-const openDetail = (v: any) => {
-  visible.value = true
-  isOnlyView.value = true
-  Object.assign(form, v)
-}
-
-const close = () => {
-  visible.value = false
+  await nextTick()
+  id.value = _id
+  Object.assign(form.value, reset)
 }
 
 const handleClose = () => {
-  isOnlyView.value = false
+  visible.value = false
+  id.value = undefined
   resetForm()
-  close()
 }
 
 const onSubmit = async () => {
   await validateForm()
-  mutate({ ...form.value })
+  mutate({ ...form.value, id: id.value } as CreateRoleDto)
 }
 
 defineExpose({
   open,
   close,
-  openEdit,
-  openDetail
+  openEdit
 })
 </script>
 
 <template>
-  <el-dialog v-model="visible" title="添加新角色" :width="720" @close="handleClose">
-    <div v-if="visible" class="h-60vh overflow-auto">
-      <p class="text-#919191 mb-20px">
-        设置角色权限时：有 (功能) 提示的为菜单内的功能，否则为菜单，如果未勾选菜单，界面将不展示；
-      </p>
-      <div>
-        <el-form
-          ref="formRef"
-          :model="form"
-          :rules="rules"
-          label-width="auto"
-          :disabled="isOnlyView"
-        >
-          <el-form-item prop="name" label="角色名称">
-            <el-input v-model="form.name" />
-          </el-form-item>
-          <el-form-item prop="remark" label="备注">
-            <el-input v-model="form.remark" />
-          </el-form-item>
-          <el-form-item label=" ">
-            <el-button :loading="isPending" class="w-full" type="primary" @click="onSubmit">
-              提交
-            </el-button>
-          </el-form-item>
-        </el-form>
-      </div>
+  <el-dialog
+    v-model="visible"
+    :title="id ? '编辑角色' : '添加新角色'"
+    :width="600"
+    @close="handleClose"
+  >
+    <div>
+      <el-form ref="formRef" :model="form" :rules="rules" label-width="auto">
+        <el-form-item prop="name" label="角色名称">
+          <el-input v-model="form.name" placeholder="请输入" />
+        </el-form-item>
+        <el-form-item prop="code" label="角色标识码">
+          <el-input v-model="form.code" placeholder="值必须唯一" />
+        </el-form-item>
+        <el-form-item prop="desc" label="描述">
+          <el-input v-model="form.desc" placeholder="描述" />
+        </el-form-item>
+      </el-form>
     </div>
+    <template #footer>
+      <el-button @click="handleClose">取消</el-button>
+      <el-button type="primary" :loading="isPending" @click="onSubmit">确定</el-button>
+    </template>
   </el-dialog>
 </template>

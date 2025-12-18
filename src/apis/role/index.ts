@@ -19,8 +19,8 @@ export const deleteRoleApi = (id: CreateRoleDto['id']) =>
 
 /* 查询角色列表 */
 export const queryRoleListApi = (params: PaginatedRequest, config: AxiosRequestConfig = {}) =>
-  httpClient.getPaginated<RoleDto>(`/api/role/list`, params, config)
+  httpClient.get<RoleDto>(`/api/role/list`, params, config)
 
 /* 查询角色详情 */
 export const queryRoleDetailApi = (id: CreateRoleDto['id']) =>
-  httpClient.getPaginated<RoleDto>(`/api/role/${id}`)
+  httpClient.get<RoleDto>(`/api/role/${id}`)

@@ -2,6 +2,8 @@
 import type { RoleDto } from '@/apis/role'
 import type { TableColumn } from '@/components/TheTable/type'
 import { Delete, Edit } from '@element-plus/icons-vue'
+import { useReqRoles } from '../hooks'
+import { ElLoading } from 'element-plus'
 
 const emit = defineEmits<{
   edit: [v: RoleDto]
@@ -14,6 +16,10 @@ const columns: TableColumn[] = [
   {
     label: '角色',
     prop: 'name'
+  },
+  {
+    label: '角色',
+    prop: 'code'
   },
   {
     label: '创建时间',
@@ -33,6 +39,16 @@ const columns: TableColumn[] = [
     width: 120
   }
 ]
+
+const { deleteRoleMutation } = useReqRoles()
+
+const { mutateAsync: deleteRole } = deleteRoleMutation
+
+const handleDelete = async (id: number) => {
+  const loadingInstance = ElLoading.service({ text: '正在删除', fullscreen: false })
+  await deleteRole(id)
+  loadingInstance.close()
+}
 </script>
 
 <template>
@@ -56,11 +72,19 @@ const columns: TableColumn[] = [
             <Edit />
           </el-icon>
         </el-link>
-        <el-link :underline="false" type="danger" @click="emit('delete', scope.row)">
-          <el-icon :size="16">
-            <Delete />
-          </el-icon>
-        </el-link>
+        <el-popconfirm
+          :width="240"
+          title="你确认删除改角色吗？"
+          @confirm="() => handleDelete(scope.row.id)"
+        >
+          <template #reference>
+            <el-link :underline="false" type="danger">
+              <el-icon :size="16">
+                <Delete />
+              </el-icon>
+            </el-link>
+          </template>
+        </el-popconfirm>
       </el-space>
     </template>
   </TheTable>
