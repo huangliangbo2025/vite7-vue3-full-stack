@@ -18,8 +18,6 @@ const createAxiosInstance = (baseURL?: string): AxiosInstance => {
     (config: InternalAxiosRequestConfig) => {
       const { token } = useAuthStore()
 
-      console.log('--token--', token)
-
       // 添加 token 等认证信息
       if (!config.skipToken) {
         if (token && config.headers)
@@ -58,7 +56,6 @@ const createAxiosInstance = (baseURL?: string): AxiosInstance => {
         clearUserInfo()
         window.location.href = '/auth/login'
       } else {
-        console.log('--- 响应数据 ---', response.data)
         // 业务逻辑错误
         const errorMsg = response.data?.message || '请求失败'
         ElMessage.error(errorMsg)
