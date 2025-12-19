@@ -16,10 +16,8 @@ declare module 'vue-router' {
     /* 是否需要登录 */
     noLogin?: boolean
     /* 是否禁止点击 */
-    disabled: boolean
+    disabled?: boolean
     // 权限
     permissions?: string[]
-    // 维持高亮
-    activeMenu?: string
   }
 }
