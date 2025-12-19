@@ -1,46 +1,36 @@
-<template>
-  <!-- 使用highlightjs组件来高亮代码 -->
-  <highlightjs
-    :code="code"
-    :language="language"
-    :highlight-only="highlightOnly"
-    :class="themeClass"
-  />
-</template>
-
 <script setup lang="ts">
-import { computed } from 'vue'
+import { onMounted, ref, watch, nextTick } from 'vue'
+import hljs from 'highlight.js'
+import java from 'highlight.js/lib/languages/java'
+import sql from 'highlight.js/lib/languages/sql'
+import 'highlight.js/styles/atom-one-dark.css' // 如果需要，在你的组件导入它
+// import 'highlight.js/styles/github.css'
+
+hljs.registerLanguage('javascript', java)
+hljs.registerLanguage('xml', sql)
 
 const props = defineProps<{
   code: string
-  language?: string
-  highlightOnly?: boolean
-  theme?: 'light' | 'dark'
 }>()
 
-// 默认值
-const theme = computed(() => props.theme || 'light') // 默认主题为 'light'
+const codeRef = ref<HTMLElement | null>(null)
 
-// 动态计算主题样式类
-const themeClass = computed(() => (theme.value === 'dark' ? 'highlight-dark' : 'highlight-light'))
+const highlight = async () => {
+  await nextTick()
+  if (codeRef.value) {
+    hljs.highlightElement(codeRef.value)
+  }
+}
+
+onMounted(highlight)
+
+watch(() => props.code, highlight)
 </script>
 
-<style scoped>
-/* 浅色主题 */
-pre.highlight-light {
-  background-color: #fafafa;
-  color: #333;
-  padding: 15px;
-  border-radius: 6px;
-  overflow: auto;
-}
-
-/* 深色主题 */
-pre.highlight-dark {
-  background-color: #2d2d2d;
-  color: #f8f8f2;
-  padding: 15px;
-  border-radius: 6px;
-  overflow: auto;
-}
-</style>
+<template>
+  <pre class="h-full w-full overflow-auto">
+    <code ref="codeRef" class="hljs">
+{{ code }}
+    </code>
+  </pre>
+</template>
