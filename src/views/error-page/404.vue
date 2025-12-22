@@ -10,7 +10,7 @@ const goHome = () => {
 </script>
 
 <template>
-  <div class="flex min-h-screen flex-col items-center justify-center bg-gray-50 px-4 text-gray-700">
+  <div class="flex min-h-screen flex-col items-center justify-center px-4 text-gray-700">
     <img class="w-60% h-auto" :src="img_404" alt="" />
     <!-- <div class="text-center">
       <h1 class="text-9xl font-extrabold tracking-widest">404</h1>

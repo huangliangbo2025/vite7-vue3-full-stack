@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useAppTheme } from '@/hooks/useAppTheme'
 import type { MenuDto } from '@/apis/menu'
 import { useReqMenu } from '../../menu/hooks'
 import { filterMenu } from '@/utils/menu'
@@ -21,11 +22,14 @@ const data = computed(() => {
 const handleNodeClick = (menuItem: MenuDto) => {
   emit('select', menuItem)
 }
+
+const { isDark } = useAppTheme()
 </script>
 
 <template>
   <el-tree
     class="menu-tree-container"
+    :class="{ 'is-dark': isDark }"
     :data="data"
     :node-key="'id'"
     :props="defaultProps"
@@ -51,6 +55,12 @@ const handleNodeClick = (menuItem: MenuDto) => {
 
   .el-tree-node__content {
     height: 36px;
+  }
+
+  &.is-dark {
+    .el-tree-node.is-current > .el-tree-node__content {
+      background: var(--el-color-info-light-7);
+    }
   }
 }
 </style>
