@@ -4,6 +4,7 @@ import UserInfo from './UserInfo.vue'
 import { Brush, MagicStick } from '@element-plus/icons-vue'
 import PrimaryColor from './PrimaryColor.vue'
 import SkinToggle from './SkinToggle.vue'
+import Lang from './Lang.vue'
 
 const circleUrl = 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'
 </script>
@@ -19,8 +20,19 @@ const circleUrl = 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1ep
       <el-space :size="20">
         <!-- 设置主题颜色 -->
         <PrimaryColor />
+
+        <el-divider :direction="'vertical'" class="!m-0" />
+
+        <!-- 预约切换 -->
+        <Lang />
+
+        <el-divider :direction="'vertical'" class="!m-0" />
+
         <!-- 暗黑/浅色切换 -->
         <SkinToggle />
+
+        <el-divider :direction="'vertical'" class="!m-0" />
+
         <UserInfo />
       </el-space>
     </div>

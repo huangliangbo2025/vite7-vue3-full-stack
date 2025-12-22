@@ -6,10 +6,17 @@ import { Platform } from '@element-plus/icons-vue'
 const { predefinedColors, setPrimary } = usePrimaryColor()
 
 const { isDark } = useAppTheme()
+
+const popoverRef = useTemplateRef('popoverRef')
+
+const onClick = (color: string) => {
+  setPrimary(color)
+  popoverRef.value?.hide()
+}
 </script>
 
 <template>
-  <el-popover width="154" trigger="click" title="设置主题颜色">
+  <el-popover width="154" trigger="click" title="设置主题颜色" ref="popoverRef">
     <template #reference>
       <span class="primary-color-btn" :class="{ 'is-dark': isDark }">
         <el-icon size="16"><Platform /></el-icon>
@@ -21,7 +28,7 @@ const { isDark } = useAppTheme()
         :key="color"
         class="w-20px h-20px block cursor-pointer"
         :style="{ backgroundColor: color }"
-        @click="() => setPrimary(color)"
+        @click="() => onClick(color)"
       ></span>
     </el-space>
   </el-popover>

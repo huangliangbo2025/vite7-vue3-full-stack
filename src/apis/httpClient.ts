@@ -40,8 +40,6 @@ class VueQueryHttpClient {
       ...config,
     })
 
-    console.log('--response--', response)
-
     return response.data
   }
 

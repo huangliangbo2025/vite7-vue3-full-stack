@@ -43,10 +43,6 @@ export const useReqPermission = (attrs: Attrs = {}) => {
     placeholderData: keepPreviousData,
   })
 
-  watch(() => queryPermissionList.data.value, () => {
-    console.log('123131', queryPermissionList.data.value)
-  })
-
   const permissionList = computed(() => queryPermissionList.data.value || [])
 
   // 创建用户接口

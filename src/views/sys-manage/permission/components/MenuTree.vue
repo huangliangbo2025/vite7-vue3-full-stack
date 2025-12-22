@@ -42,8 +42,6 @@ const { isDark } = useAppTheme()
 
 <style lang="scss">
 .menu-tree-container {
-  position: relative;
-  top: 20px;
   display: flex;
   flex-direction: column;
   gap: 12px;

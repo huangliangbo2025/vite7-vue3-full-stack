@@ -1,6 +1,5 @@
 import { generatePrimaryVars } from '@/utils'
 import { useStorage } from '@vueuse/core'
-import { set } from 'lodash-es'
 
 export function usePrimaryColor() {
   // 预定义颜色
@@ -15,6 +14,9 @@ export function usePrimaryColor() {
     '#fa541c', // 橙色
     '#8c8c8c', // 灰色
     '#001529', // 暗色
+    '#801529', //
+    '#501529', //
+    '#012d57', //
   ]
   // 本地持久化主题色
   const primaryColor = useStorage(

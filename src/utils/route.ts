@@ -39,8 +39,6 @@ export function convertPathToPascalCase(path: string): string {
 
   const v = pascalCaseWords.join('')
 
-  console.log('---path--', path, v)
-
   return v
 }
 

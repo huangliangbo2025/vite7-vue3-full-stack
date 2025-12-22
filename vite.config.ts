@@ -1,3 +1,4 @@
+import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import path from 'node:path'
@@ -68,6 +69,15 @@ export default defineConfig(({ command }) => {
         enable: isDev, // 启用 mock
         watchFiles: true, // mock 热更新
         logger: true, // 日志打印
+      }),
+      VueI18nPlugin({
+        // 语言文件路径
+        include: path.resolve(__dirname, 'src/locales/*/index.ts'),
+
+        // 默认开启 Composition API
+        runtimeOnly: false,
+        compositionOnly: true,
+        fullInstall: true,
       }),
     ],
     css: {

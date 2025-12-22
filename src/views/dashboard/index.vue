@@ -70,7 +70,7 @@ const statisticalList = computed(() => {
                 </span>
               </el-tag>
               <div class="h-80px flex flex-col justify-between">
-                <span class="text-20px leading-40px font-700 text-black">{{ item.value }}</span>
+                <span class="text-20px leading-40px font-700">{{ item.value }}</span>
                 <span
                   class="text-16px leading-40px leading-40px text-[var(--el-color-info-dark-2)]"
                   >{{ item.title }}</span

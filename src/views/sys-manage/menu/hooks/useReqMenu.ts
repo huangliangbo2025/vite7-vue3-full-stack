@@ -38,10 +38,6 @@ export const useReqMenu = (attrs: Attrs = {}) => {
     placeholderData: keepPreviousData,
   })
 
-  watch(() => queryMenuList.data.value, () => {
-    console.log('123131', queryMenuList.data.value)
-  })
-
   const menuList = computed(() => queryMenuList.data.value || [])
 
   // 创建用户接口
