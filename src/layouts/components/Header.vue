@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import { Expand } from '@element-plus/icons-vue'
+import { Dish, Expand, Platform } from '@element-plus/icons-vue'
 import UserInfo from './UserInfo.vue'
+import { Brush, MagicStick } from '@element-plus/icons-vue'
+import PrimaryColor from './PrimaryColor.vue'
+import SkinToggle from './SkinToggle.vue'
 
 const circleUrl = 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'
 </script>
@@ -13,7 +16,13 @@ const circleUrl = 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1ep
       </el-icon>
     </el-button>
     <div>
-      <UserInfo />
+      <el-space :size="20">
+        <!-- 设置主题颜色 -->
+        <PrimaryColor />
+        <!-- 暗黑/浅色切换 -->
+        <SkinToggle />
+        <UserInfo />
+      </el-space>
     </div>
   </div>
 </template>

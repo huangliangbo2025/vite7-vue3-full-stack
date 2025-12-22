@@ -66,10 +66,10 @@ const onClose = () => {
 </template>
 <style lang="scss">
 .my-dialog {
-  margin: 0 !important;
   position: absolute;
   top: 50%;
   left: 50%;
+  margin: 0 !important;
   transform: translate(-50%, -50%);
 }
 </style>

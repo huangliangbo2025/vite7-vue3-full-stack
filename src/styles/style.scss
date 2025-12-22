@@ -3,7 +3,8 @@ body,
 #app {
   height: 100%;
 }
+
 body {
-  color: #213547;
+  color: var(--text-default-color);
   background-color: var(--el-bg-color-page);
 }

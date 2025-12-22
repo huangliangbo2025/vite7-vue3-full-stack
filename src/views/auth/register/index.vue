@@ -31,9 +31,9 @@ const router = useRouter()
 <style lang="scss">
 .register-wrap {
   position: relative;
-  overflow: hidden;
   width: 100%;
   height: calc(100vh);
+  overflow: hidden;
   background-size: 100% auto !important;
 }
 
@@ -41,15 +41,15 @@ const router = useRouter()
   position: absolute;
   top: 50%;
   left: 50%;
-  box-sizing: border-box;
   width: 406px;
   min-height: 484px;
   padding: 36px;
-  border-radius: 8px;
   background: #fff;
   background-size: cover;
+  border-radius: 8px;
   box-shadow: 0 0 6px #999;
   transform: translate(-50%, -50%);
+  box-sizing: border-box;
 }
 
 .register-form-box {

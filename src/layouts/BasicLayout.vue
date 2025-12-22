@@ -3,6 +3,9 @@ import { useAuthStore } from '@/stores'
 import { RouteView, Menus, Header } from './components'
 import { storeToRefs } from 'pinia'
 import { sortMenuTree } from '@/utils/menu'
+import { useAppTheme } from '@/hooks/useAppTheme'
+
+const { isDark } = useAppTheme()
 
 const { menus } = storeToRefs(useAuthStore())
 
@@ -31,18 +34,25 @@ const menuData = computed(() => sortMenuTree(menus.value))
 
 <style lang="scss" scoped>
 .layout-header {
-  height: $top-bar-height;
+  height: var(--top-bar-height);
   background: #fff;
 }
 
 .layout-aside {
-  width: $sidebar-width;
-  height: 100%;
-  padding: 12px 12px;
-  box-shadow: 0px 0px 6px var(--el-border-color);
   position: relative;
   z-index: 1;
+  width: var(--sidebar-width);
+  height: 100%;
+  padding: 12px;
   overflow-y: auto;
   background-color: #fff;
+  box-shadow: 0 0 6px var(--el-border-color);
+}
+
+.dark {
+  .layout-header,
+  .layout-aside {
+    background-color: var(--el-bg-color-overlay);
+  }
 }
 </style>

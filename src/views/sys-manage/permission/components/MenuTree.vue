@@ -38,13 +38,17 @@ const handleNodeClick = (menuItem: MenuDto) => {
 
 <style lang="scss">
 .menu-tree-container {
+  position: relative;
+  top: 20px;
   display: flex;
   flex-direction: column;
   gap: 12px;
+
   & > .el-tree-node {
     border: 1px solid #e9f5fe;
     border-radius: 4px;
   }
+
   .el-tree-node__content {
     height: 36px;
   }

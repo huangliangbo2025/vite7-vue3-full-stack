@@ -1,11 +1,11 @@
 @use './base.scss' as *;
 
 .scroll-y-transition {
-  @include transition-default();
+  @include transition-default;
 
   &-enter-from,
   &-leave-to {
-    opacity: 0%;
+    opacity: 0;
   }
 
   &-enter-from {
@@ -18,11 +18,11 @@
 }
 
 .scroll-y-reverse-transition {
-  @include transition-default();
+  @include transition-default;
 
   &-enter-from,
   &-leave-to {
-    opacity: 0%;
+    opacity: 0;
   }
 
   &-enter-from {
@@ -35,11 +35,11 @@
 }
 
 .scroll-x-transition {
-  @include transition-default();
+  @include transition-default;
 
   &-enter-from,
   &-leave-to {
-    opacity: 0%;
+    opacity: 0;
   }
 
   &-enter-from {
@@ -52,11 +52,11 @@
 }
 
 .scroll-x-reverse-transition {
-  @include transition-default();
+  @include transition-default;
 
   &-enter-from,
   &-leave-to {
-    opacity: 0%;
+    opacity: 0;
   }
 
   &-enter-from {

@@ -36,14 +36,14 @@ defineProps<Props>()
 }
 
 .menu-icon {
-  display: block;
-  width: 40px;
-  text-align: center;
-  font-size: 24px;
-  flex-shrink: 0;
-  color: currentcolor;
   position: relative;
   top: -2px;
+  display: block;
+  width: 40px;
+  font-size: 24px;
+  text-align: center;
+  color: currentcolor;
+  flex-shrink: 0;
 }
 
 .menu-title {
