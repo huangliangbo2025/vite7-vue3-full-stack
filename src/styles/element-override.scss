@@ -4,23 +4,24 @@
 @forward 'element-plus/theme-chalk/src/common/var.scss' with (
   $colors: (
     'primary': (
-      'base': #3e4fef,
+      'base': #3e4fef
     ),
     'success': (
-      'base': #14C104,
+      'base': #14c104
     ),
     'warning': (
-      'base': #FF9610,
+      'base': #ff9610
     ),
     'danger': (
-      'base': #e34d59,
+      'base': #e34d59
     ),
     'error': (
-      'base': #aa0513,
+      'base': #aa0513
     ),
     // 'info': (
     //   'base': #e7e7e7,
      // ),
   )
 );
+
 // @use 'element-plus/theme-chalk/src/message.scss';

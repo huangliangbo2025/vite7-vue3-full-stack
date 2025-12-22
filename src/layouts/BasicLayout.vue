@@ -33,13 +33,13 @@ const menuData = computed(() => generateMenuData(permissionsRoutes))
 }
 
 .layout-aside {
-  width: $sidebar-width;
-  height: 100%;
-  padding: 12px 12px;
-  box-shadow: 0px 0px 6px var(--el-border-color);
   position: relative;
   z-index: 1;
+  width: $sidebar-width;
+  height: 100%;
+  padding: 12px;
   overflow-y: auto;
   background-color: #fff;
+  box-shadow: 0 0 6px var(--el-border-color);
 }
 </style>

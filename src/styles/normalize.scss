@@ -5,13 +5,17 @@
 *,
 *::before,
 *::after {
-  /* 统一盒模型：宽高包含内边距和边框 */
-  box-sizing: border-box;
+  padding: 0;
+
   /* 清除默认内外边距（部分元素默认有 margin/padding） */
   margin: 0;
-  padding: 0;
+
+  /* 统一盒模型：宽高包含内边距和边框 */
+  box-sizing: border-box;
+
   /* 防止移动端点击高亮 */
   -webkit-tap-highlight-color: transparent;
+
   /* 字体抗锯齿（提升渲染清晰度） */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -19,26 +23,35 @@
 
 /* 重置根元素字体大小（适配 rem 布局） */
 html {
-  /* 1rem = 10px（方便计算，可根据需求调整） */
-  font-size: 62.5%;
   /* 禁止横向滚动 */
   overflow-x: hidden;
+
+  /* 1rem = 10px（方便计算，可根据需求调整） */
+  font-size: 62.5%;
+
   /* 平滑滚动 */
   scroll-behavior: smooth;
 }
 
 /* 重置 body 基础样式 */
 body {
+  /* 通用字体栈（兼顾各系统） */
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
   /* 基础字体大小：16px（适配大部分场景） */
   font-size: 1.6rem;
-  /* 通用字体栈（兼顾各系统） */
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
   /* 行高（提升可读性） */
   line-height: 1.5;
+
   /* 文本颜色（中性灰，避免纯黑） */
   color: #333;
+
   /* 背景色（纯白，可根据需求调整） */
   background-color: #fff;
+
   /* 禁止选中（非必要，可注释） */
   user-select: none;
 }
@@ -54,8 +67,10 @@ ol {
 a {
   /* 清除默认下划线 */
   text-decoration: none;
+
   /* 继承文本颜色 */
   color: inherit;
+
   /* 点击可点性（解决移动端兼容） */
   touch-action: manipulation;
 }
@@ -65,19 +80,24 @@ button,
 input,
 select,
 textarea {
-  /* 清除默认样式 */
-  border: none;
-  outline: none;
   /* 继承字体样式 */
   font-family: inherit;
   font-size: inherit;
+
   /* 清除默认背景 */
   background-color: transparent;
+
+  /* 清除默认样式 */
+  border: none;
+
   /* 清除按钮默认边框 */
   border-radius: 0;
+  outline: none;
+
   /* 解决 iOS 按钮样式 */
-  -webkit-appearance: none;
   appearance: none;
+  appearance: none;
+
   /* 鼠标样式 */
   cursor: pointer;
 }
@@ -92,18 +112,21 @@ img,
 video,
 iframe,
 svg {
-  /* 响应式 */
-  max-width: 100%;
-  /* 垂直对齐 */
-  vertical-align: middle;
   /* 清除底部空白 */
   display: block;
+
+  /* 响应式 */
+  max-width: 100%;
+
+  /* 垂直对齐 */
+  vertical-align: middle;
 }
 
 /* 重置表格样式 */
 table {
   /* 合并边框 */
   border-collapse: collapse;
+
   /* 边框间距 */
   border-spacing: 0;
 }
@@ -115,10 +138,11 @@ h3,
 h4,
 h5,
 h6 {
-  /* 清除默认加粗 */
-  font-weight: normal;
   /* 继承字体大小（可自定义） */
   font-size: inherit;
+
+  /* 清除默认加粗 */
+  font-weight: normal;
 }
 
 /* 重置表单元素禁用状态 */
@@ -130,7 +154,7 @@ input:disabled {
 
 /* 清除浮动（兼容旧方案） */
 .clearfix::after {
-  content: "";
+  content: '';
   display: block;
   clear: both;
   height: 0;
@@ -144,25 +168,29 @@ input:disabled {
 }
 
 /* 清除 input 类型为 number 的上下箭头 */
-input[type="number"] {
-  -moz-appearance: textfield;
+input[type='number'] {
+  appearance: textfield;
 }
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  appearance: none;
   margin: 0;
 }
 
 /* 重置 placeholder 样式（可自定义） */
-::-webkit-input-placeholder {
+::input-placeholder {
   color: #999;
 }
-::-moz-placeholder {
+
+::placeholder {
   color: #999;
 }
-:-ms-input-placeholder {
+
+:input-placeholder {
   color: #999;
 }
+
 ::placeholder {
   color: #999;
 }

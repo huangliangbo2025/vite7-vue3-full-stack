@@ -23,9 +23,9 @@ import PwdLogin from './PwdLogin.vue'
 <style lang="scss">
 .login-wrap {
   position: relative;
-  overflow: hidden;
   width: 100%;
   height: calc(100vh);
+  overflow: hidden;
   background-size: 100% auto !important;
 }
 
@@ -33,14 +33,14 @@ import PwdLogin from './PwdLogin.vue'
   position: absolute;
   top: 50%;
   left: 50%;
-  box-sizing: border-box;
   width: 406px;
   padding: 36px;
-  border-radius: 8px;
   background: #fff;
   background-size: cover;
+  border-radius: 8px;
   box-shadow: 0 0 6px #999;
   transform: translate(-50%, -50%);
+  box-sizing: border-box;
 }
 
 .login-form-box {
@@ -58,9 +58,9 @@ import PwdLogin from './PwdLogin.vue'
     height: $height;
     padding-top: 4px;
     padding-bottom: 4px;
-    border-radius: 8px;
-    line-height: 38px;
     overflow: hidden;
+    line-height: 38px;
+    border-radius: 8px;
   }
 
   .identify {
@@ -70,8 +70,8 @@ import PwdLogin from './PwdLogin.vue'
     bottom: 1px;
     z-index: 1;
     overflow: hidden;
-    border-radius: 8px;
     line-height: 46px;
+    border-radius: 8px;
 
     img {
       vertical-align: middle;
@@ -81,8 +81,8 @@ import PwdLogin from './PwdLogin.vue'
   .login-btn {
     width: 100%;
     height: $height !important;
-    border-color: var(--el-color-primary);
     background-color: var(--el-color-primary);
+    border-color: var(--el-color-primary);
   }
 }
 </style>
