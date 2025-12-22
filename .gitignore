@@ -26,3 +26,4 @@ dist-ssr
 
 .eslintrc-auto-import.json
 typings/*.d.ts
+imported-routes-map.ts
