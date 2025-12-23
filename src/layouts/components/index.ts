@@ -1,3 +1,8 @@
 export { default as Header } from './Header.vue'
+export { default as Lang } from './Lang.vue'
+export { default as Logo } from './Logo.vue'
 export { default as Menus } from './Menus/index.vue'
+export { default as PrimaryColor } from './PrimaryColor.vue'
 export { default as RouteView } from './RouteView.vue'
+export { default as SkinToggle } from './SkinToggle.vue'
+export { default as UserInfo } from './UserInfo.vue'

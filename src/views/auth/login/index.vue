@@ -44,7 +44,7 @@ function onTabChange(key: string) {
 </script>
 
 <template>
-  <div class="login-wrap bg-[rgba(115,103,240,0.1)]">
+  <div class="login-wrap bg-[--el-color-primary-light-9]">
     <div class="login-content">
       <div class="head mb-30px">
         <p class="text-30px mb-12px text-center font-bold">欢迎回来</p>

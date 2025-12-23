@@ -15,10 +15,12 @@ const onClick = (key: LangType) => {
 <template>
   <el-popover width="154" trigger="click" ref="popoverRef">
     <template #reference>
-      <span class="gap-6px flex cursor-pointer items-center">
-        <svg-icon name="lang"></svg-icon>
-        <el-icon size="10"><ArrowDownBold /></el-icon>
-      </span>
+      <slot>
+        <span class="gap-6px flex cursor-pointer items-center">
+          <svg-icon name="lang"></svg-icon>
+          <el-icon size="10"><ArrowDownBold /></el-icon>
+        </span>
+      </slot>
     </template>
     <ul class="gap-12px flex flex-col">
       <li v-for="(l, key) in langOptions" :key="key">

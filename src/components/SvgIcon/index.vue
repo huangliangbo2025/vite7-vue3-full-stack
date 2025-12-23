@@ -2,7 +2,7 @@
 <script setup lang="ts">
 interface Props {
   name: string
-  size?: string
+  size?: string | number
   color?: string
   spin?: boolean
 }

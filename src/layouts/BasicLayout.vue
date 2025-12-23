@@ -43,7 +43,6 @@ const menuData = computed(() => sortMenuTree(menus.value))
   z-index: 1;
   width: var(--sidebar-width);
   height: 100%;
-  padding: 12px;
   overflow-y: auto;
   background-color: #fff;
   box-shadow: 0 0 6px var(--el-border-color);

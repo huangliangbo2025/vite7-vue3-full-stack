@@ -62,6 +62,11 @@ export default defineConfig(({ command }) => {
         symbolId: 'icon-[name]',
         inject: 'body-last',
         customDomId: '__svg__icons__dom__',
+        /*  svgoOptions: {
+          plugins: [
+            { name: 'removeAttrs', params: { attrs: ['fill', 'stroke'] } }
+          ]
+        } */
       }),
       VueDevTools(),
       viteMockServe({

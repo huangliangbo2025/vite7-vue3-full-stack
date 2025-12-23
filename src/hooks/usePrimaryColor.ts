@@ -1,6 +1,8 @@
 import { generatePrimaryVars } from '@/utils'
 import { useStorage } from '@vueuse/core'
 
+export const PRIMARY_DEFAULT_COLOR = '#3e4fef'
+
 export function usePrimaryColor() {
   // 预定义颜色
   const predefinedColors = [
@@ -21,7 +23,7 @@ export function usePrimaryColor() {
   // 本地持久化主题色
   const primaryColor = useStorage(
     'theme-primary-color',
-    '#3e4fef',
+    PRIMARY_DEFAULT_COLOR,
   )
 
   function applyPrimary(color: string) {
