@@ -57,11 +57,21 @@ const router = useRouter()
 
   position: relative;
   z-index: 111;
-  background-color: #fff;
 
   .register-btn {
     width: 100%;
     background-color: var(--el-color-primary);
+  }
+}
+
+.dark {
+  .register-wrap {
+    background: none;
+  }
+
+  .register-content {
+    background-color: var(--el-bg-color-overlay);
+    box-shadow: 0 0 6px var(--el-bg-color-overlay);
   }
 }
 </style>

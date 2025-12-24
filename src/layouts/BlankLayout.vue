@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { Logo, Lang, PrimaryColor, RouteView } from './components'
+import { useAppTheme } from '@/hooks'
+import { Logo, Lang, PrimaryColor, RouteView, SkinToggle } from './components'
+
+const { isDark } = useAppTheme()
 </script>
 
 <template>
@@ -19,10 +22,15 @@ import { Logo, Lang, PrimaryColor, RouteView } from './components'
 
           <!-- 预约切换 -->
           <Lang>
-            <span class="text-primary cursor-pointer">
+            <span class="text-primary cursor-pointer" :class="{ 'text-primary-light-7': isDark }">
               <svg-icon size="20" name="global"></svg-icon>
             </span>
           </Lang>
+
+          <el-divider :direction="'vertical'" class="!m-0" />
+
+          <!-- 黑白切换 -->
+          <SkinToggle />
         </el-space>
       </div>
     </div>

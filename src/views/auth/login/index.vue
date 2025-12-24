@@ -44,7 +44,7 @@ function onTabChange(key: string) {
 </script>
 
 <template>
-  <div class="login-wrap bg-[--el-color-primary-light-9]">
+  <div class="login-wrap">
     <div class="login-content">
       <div class="head mb-30px">
         <p class="text-30px mb-12px text-center font-bold">欢迎回来</p>
@@ -82,7 +82,7 @@ function onTabChange(key: string) {
   width: 100%;
   height: calc(100vh);
   overflow: hidden;
-  background-size: 100% auto !important;
+  background: var(--el-color-primary-light-9);
 }
 
 .login-content {
@@ -93,7 +93,6 @@ function onTabChange(key: string) {
   min-height: 484px;
   padding: 36px;
   background: #fff;
-  background-size: cover;
   border-radius: 8px;
   box-shadow: 0 0 6px #999;
   transform: translate(-50%, -50%);
@@ -105,7 +104,6 @@ function onTabChange(key: string) {
 
   position: relative;
   z-index: 111;
-  background-color: #fff;
 
   .el-input__wrapper {
     height: $height;
@@ -136,6 +134,17 @@ function onTabChange(key: string) {
     height: $height !important;
     background-color: var(--el-color-primary);
     border-color: var(--el-color-primary);
+  }
+}
+
+.dark {
+  .login-wrap {
+    background: none;
+  }
+
+  .login-content {
+    background-color: var(--el-bg-color-overlay);
+    box-shadow: 0 0 6px var(--el-bg-color-overlay);
   }
 }
 </style>

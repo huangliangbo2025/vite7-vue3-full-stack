@@ -47,7 +47,7 @@ const onClick = (color: string) => {
   cursor: pointer;
 
   &.is-dark {
-    background: var(--el-color-info-light-7) !important;
+    background: var(--el-color-primary-light-7) !important;
   }
 }
 </style>
