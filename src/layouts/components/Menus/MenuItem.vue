@@ -4,12 +4,15 @@ import { ElMenuItem, ElSubMenu } from 'element-plus'
 import { computed } from 'vue'
 import MenuItemContent from './MenuItemContent.vue'
 import type { MenuDto } from '@/apis/menu'
+import { useCollapseInject } from '@/layouts/helper/menuCollapse'
 
 interface Props {
   item: MenuDto
 }
 
 const { item } = defineProps<Props>()
+
+const { isCollapse } = useCollapseInject()
 
 // 判断是否有子菜单
 const hasChildren = computed(() => {
@@ -30,8 +33,12 @@ const hasChildren = computed(() => {
     />
   </ElSubMenu>
 
-  <!-- 没有子菜单的情况 -->
-  <ElMenuItem v-else :index="item.path" :disabled="item.disabled">
+  <!-- 没有子菜单的情况, 当菜单收缩时，哪些无用的标题隐藏掉 -->
+  <ElMenuItem
+    v-else-if="!(isCollapse && item.disabled)"
+    :index="item.path"
+    :disabled="item.disabled"
+  >
     <MenuItemContent :item="item" />
   </ElMenuItem>
 </template>

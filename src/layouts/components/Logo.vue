@@ -1,11 +1,15 @@
 <script setup lang="ts">
-// import LogoImg from '@/assets/images/logo.png'
+import { useCollapseInject } from '../helper/menuCollapse'
+
+const { isCollapse } = useCollapseInject()
 </script>
 
 <template>
-  <el-space class="text-primary">
-    <!-- <img :src="LogoImg" width="24" height="24" /> -->
+  <div
+    class="text-primary flex gap-3"
+    :class="{ 'justify-center': isCollapse, 'w-full': isCollapse }"
+  >
     <svg-icon name="logo" :size="24" />
-    <span>平台管理系统</span>
-  </el-space>
+    <span v-if="!isCollapse">平台管理系统</span>
+  </div>
 </template>

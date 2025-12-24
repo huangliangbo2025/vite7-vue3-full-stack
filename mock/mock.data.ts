@@ -219,7 +219,7 @@ export const getMenuList = () => [
     parentId: '',
     path: 'https://www.baidu.com/',
     title: '外链',
-    icon: 'menu-icon-dashboard',
+    icon: 'menu-icon-link',
     order: 9001,
     keepAlive: true,
     hidden: false,

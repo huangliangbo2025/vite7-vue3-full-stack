@@ -1,89 +1,132 @@
-.menu-container {
+.app-side-menu-container {
   width: 100%;
   height: 100%;
   overflow: hidden auto;
 
   .el-menu {
-    width: 100% !important;
     background: none;
     border: none;
-    transition: width 0.3s ease;
 
     &:not(.el-menu--collapse) {
       width: var(--sidebar-width);
     }
+
+    &.el-menu--collapse {
+      width: 40px;
+    }
   }
 
-  .el-menu--vertical:not(.el-menu--collapse, .el-menu--popup-container) .el-menu-item,
-  .el-menu--vertical:not(.el-menu--collapse, .el-menu--popup-container) .el-sub-menu__title,
-  .el-menu--vertical:not(.el-menu--collapse, .el-menu--popup-container) .el-menu-item-group__title {
-    // padding-left: calc(var(--el-menu-base-level-padding) + 1 * var(--el-menu-level-padding)) !important;
-    height: 38px;
-
-    // padding-left: var(--el-menu-base-level-padding) !important;
-    padding-left: 12px !important;
+  .el-menu--vertical .el-menu-item,
+  .el-menu--vertical .el-sub-menu__title,
+  .el-menu--vertical .el-menu-item-group__title {
+    height: auto;
+    padding: 0 !important;
     margin-bottom: 8px;
     font-size: 16px;
     font-weight: 500;
-    color: rgb(47 43 61 / 68%);
-    border-radius: 19px;
+    background: none;
+    border-radius: 20px;
     opacity: 1;
+  }
 
-    &.is-disabled {
-      color: rgb(47 43 61 / 42%);
-    }
+  // 对菜单项的背景以及字体颜色设置
+  .menu-item-content:hover {
+    background: var(--el-color-primary-light-9);
+  }
 
-    &.is-active {
+  .el-menu-item.is-active {
+    .menu-item-content {
+      color: #fff;
       background: linear-gradient(
         to right,
         var(--el-color-primary),
         var(--el-color-primary-light-3)
       ) !important;
+    }
+  }
 
+  .el-sub-menu.is-opened {
+    .el-sub-menu__title {
       .menu-item-content {
-        color: #fff;
+        background: var(--el-color-primary-light-9);
       }
     }
   }
 
-  .el-sub-menu.is-active > .el-sub-menu__title {
-    background: var(--el-color-primary-light-9);
+  .is-disabled {
+    .menu-item-content {
+      color: rgb(47 43 61 / 42%) !important;
+      background: none !important;
+    }
+  }
+
+  // 元素折叠状态
+  .el-menu--collapse {
+    .el-sub-menu.is-active {
+      .menu-item-content {
+        background: var(--el-color-primary-light-9) !important;
+      }
+    }
   }
 }
 
-.dark {
-  .menu-container {
-    .el-menu--vertical:not(.el-menu--collapse, .el-menu--popup-container) .el-menu-item,
-    .el-menu--vertical:not(.el-menu--collapse, .el-menu--popup-container) .el-sub-menu__title,
-    .el-menu--vertical:not(.el-menu--collapse, .el-menu--popup-container)
-      .el-menu-item-group__title {
+
+
+.el-menu--popup-container {
+    .el-menu-item {
+       padding: 4px;
+       background: none !important;
+    }
+   
+    .el-menu-item .menu-item-content:hover {
+      background: var(--el-color-primary-light-9) !important;
+    }
+
+
+    .el-menu-item.is-active .menu-item-content {
       color: #fff;
+      background: linear-gradient(
+        to right,
+        var(--el-color-primary),
+        var(--el-color-primary-light-3)
+      ) !important;
+    }
+  }
 
-      &.is-disabled {
-        color: var(--el-color-info-dark-2);
-      }
+.dark {
+  .app-side-menu-container {
+    .menu-item-content:hover {
+      background: var(--el-color-primary-light-3);
+    }
 
-      &.is-active {
-        background: linear-gradient(
-          to right,
-          var(--el-color-primary),
-          var(--el-color-primary-light-3)
-        ) !important;
-
+    .el-sub-menu.is-opened {
+      .el-sub-menu__title {
         .menu-item-content {
-          color: #fff;
+          background: var(--el-color-primary-light-3);
         }
       }
     }
 
-    .el-sub-menu > .el-sub-menu__title:hover,
-    .el-sub-menu.is-active > .el-sub-menu__title {
-      background: var(--el-color-primary-light-3);
-    }
-
-    .el-sub-menu.is-active > .el-sub-menu__title:hover,
-    .el-menu-item:hover {
-      background: var(--el-color-primary-light-3) !important;
+    .is-disabled {
+      .menu-item-content {
+        color: var(--el-color-info-dark-2) !important;
+      }
     }
   }
+
+  .el-menu--popup-container {
+    .el-menu-item .menu-item-content:hover {
+      color: #fff;
+      background: var(--el-color-primary-light-3) !important;
+    }
+
+
+    .el-menu-item.is-active .menu-item-content {
+     background: var(--el-color-primary-light-9) !important;
+     color: var(--el-color-primary);
+    }
+  }
+
+
 }
+

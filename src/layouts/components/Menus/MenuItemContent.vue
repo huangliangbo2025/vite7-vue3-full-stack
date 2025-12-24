@@ -2,16 +2,30 @@
 <script setup lang="ts">
 import { isExternal } from '@/utils/is'
 import type { MenuDto } from '@/apis/menu'
+import { useCollapseInject } from '@/layouts/helper/menuCollapse'
 
 interface Props {
   item: MenuDto
 }
 
 defineProps<Props>()
+
+const { isCollapse } = useCollapseInject()
+
+const handleClick = (e: Event, path: string) => {
+  if (isExternal(path)) {
+    e.stopPropagation()
+    window.open(path, '_blank')
+  }
+}
 </script>
 
 <template>
-  <div class="menu-item-content">
+  <div
+    class="menu-item-content"
+    :class="{ 'is-collapse': isCollapse }"
+    @click="(e: Event) => handleClick(e, item.path)"
+  >
     <span
       v-if="!item.disabled"
       class="menu-icon text-center"
@@ -29,19 +43,19 @@ defineProps<Props>()
 <style scoped>
 .menu-item-content {
   display: flex;
-  align-items: center;
   width: 100%;
-  height: 100%;
-  line-height: normal;
+  height: 40px;
+  line-height: 1.5;
+  border-radius: 20px;
+  align-items: center;
 }
 
 .menu-icon {
-  position: relative;
-  top: -2px;
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 40px;
   font-size: 24px;
-  text-align: center;
   color: currentcolor;
   flex-shrink: 0;
 }
@@ -61,3 +75,5 @@ defineProps<Props>()
   flex-shrink: 0;
 }
 </style>
+
+<style lang=""></style>

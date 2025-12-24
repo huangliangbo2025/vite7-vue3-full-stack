@@ -4,19 +4,22 @@ import { RouteView, Menus, Header } from './components'
 import { storeToRefs } from 'pinia'
 import { sortMenuTree } from '@/utils/menu'
 import { useAppTheme } from '@/hooks/useAppTheme'
+import { useCollapseProvide } from './helper/menuCollapse'
 
 const { isDark } = useAppTheme()
 
 const { menus } = storeToRefs(useAuthStore())
 
 const menuData = computed(() => sortMenuTree(menus.value))
+
+const { isCollapse } = useCollapseProvide()
 </script>
 
 <template>
   <div class="app-basic-layout h-full w-full">
     <el-container class="layout-container h-full w-full">
-      <el-aside class="layout-aside">
-        <Menus :menuData="menuData" :collapse="false" />
+      <el-aside class="layout-aside" :class="{ 'is-collapse': isCollapse }">
+        <Menus :menuData="menuData" />
       </el-aside>
       <el-container class="layout-main">
         <el-header class="layout-header !p-0px">
@@ -41,11 +44,13 @@ const menuData = computed(() => sortMenuTree(menus.value))
 .layout-aside {
   position: relative;
   z-index: 1;
-  width: var(--sidebar-width);
+  width: auto;
   height: 100%;
+  padding: 0 20px;
   overflow-y: auto;
   background-color: #fff;
   box-shadow: 0 0 6px var(--el-border-color);
+  transition: width 0.3s ease;
 }
 
 .dark {
