@@ -119,6 +119,10 @@
       "eslint --fix",
       "stylelint --fix"
     ],
+    "*.{css,scss,less}": [
+      "prettier --write",
+      "stylelint --fix"
+    ],
     "*.{json,md,yml,yaml}": [
       "dprint fmt  --allow-no-files"
     ]

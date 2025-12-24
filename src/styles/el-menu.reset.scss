@@ -70,28 +70,25 @@
   }
 }
 
-
-
 .el-menu--popup-container {
-    .el-menu-item {
-       padding: 4px;
-       background: none !important;
-    }
-   
-    .el-menu-item .menu-item-content:hover {
-      background: var(--el-color-primary-light-9) !important;
-    }
-
-
-    .el-menu-item.is-active .menu-item-content {
-      color: #fff;
-      background: linear-gradient(
-        to right,
-        var(--el-color-primary),
-        var(--el-color-primary-light-3)
-      ) !important;
-    }
+  .el-menu-item {
+    padding: 4px;
+    background: none !important;
   }
+
+  .el-menu-item .menu-item-content:hover {
+    background: var(--el-color-primary-light-9) !important;
+  }
+
+  .el-menu-item.is-active .menu-item-content {
+    color: #fff;
+    background: linear-gradient(
+      to right,
+      var(--el-color-primary),
+      var(--el-color-primary-light-3)
+    ) !important;
+  }
+}
 
 .dark {
   .app-side-menu-container {
@@ -120,13 +117,9 @@
       background: var(--el-color-primary-light-3) !important;
     }
 
-
     .el-menu-item.is-active .menu-item-content {
-     background: var(--el-color-primary-light-9) !important;
-     color: var(--el-color-primary);
+      color: var(--el-color-primary);
+      background: var(--el-color-primary-light-9) !important;
     }
   }
-
-
 }
-
