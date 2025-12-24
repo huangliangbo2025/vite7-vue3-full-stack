@@ -120,7 +120,6 @@
       "stylelint --fix"
     ],
     "*.{css,scss,less}": [
-      "prettier --write",
       "stylelint --fix"
     ],
     "*.{json,md,yml,yaml}": [
