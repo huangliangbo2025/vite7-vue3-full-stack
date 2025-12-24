@@ -41,7 +41,7 @@ const handleMenuSelect = (menuItem: MenuDto) => {
                 <template #icon>
                   <el-icon-plus />
                 </template>
-                添加菜单
+                添加权限
               </el-button>
             </div>
           </template>
