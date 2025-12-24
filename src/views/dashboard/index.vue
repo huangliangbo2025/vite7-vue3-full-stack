@@ -65,7 +65,7 @@ const statisticalList = computed(() => {
           <el-col v-for="item in statisticalList" :key="item.key" :span="6">
             <div class="gap-8px flex flex-1">
               <el-tag round :type="item.iconColor" class="h-80px! w-80px!">
-                <span class="text-40px">
+                <span class="text-40px block leading-1">
                   <svg-icon :name="item.icon" />
                 </span>
               </el-tag>
