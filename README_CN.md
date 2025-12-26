@@ -85,6 +85,34 @@
 - Tailwind CSS IntelliSense
 - GitLens
 
+如果你每次启动都会报错 Error initializing dprint. Ensure it is globally installed on the path (see https://dprint.dev/install) or specify a "dprint.path" setting to the executable. [INFO] Configuration file not found.
+请运行一下脚本
+
+```window PowerShell
+irm https://dprint.dev/install.ps1 | iex
+```
+
+```macOS / Linux
+curl -fsSL https://dprint.dev/install.sh | sh
+```
+
+并且修改你的settings.json配置
+
+Windows
+
+```json
+{
+  "dprint.path": "C:\\Users\\xxx\\.dprint\\bin\\dprint.exe"
+}
+```
+
+macOS / Linux：
+
+```json
+{
+  "dprint.path": "/Users/xxx/.dprint/bin/dprint"
+}
+
 ## 可选
 
 - One Dark Pro
@@ -115,3 +143,4 @@
   老代码、老依赖、老思维都将拖慢你的节奏。
 
 我已经深受其害，希望你不要再踩坑。
+```
