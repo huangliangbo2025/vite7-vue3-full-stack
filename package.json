@@ -3,6 +3,21 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "keywords": [
+    "vite",
+    "vite7",
+    "vite8",
+    "vue",
+    "vue3",
+    "vue@3.5",
+    "vue3.5",
+    "admin",
+    "vite-admin",
+    "vue-admin",
+    "vue3-admin",
+    "vue-vite-admin",
+    "vue3-vite-admin"
+  ],
   "engines": {
     "node": ">=20.19.0",
     "pnpm": ">=10.0.0"
