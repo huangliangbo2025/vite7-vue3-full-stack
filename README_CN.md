@@ -112,6 +112,7 @@ macOS / Linux：
 {
   "dprint.path": "/Users/xxx/.dprint/bin/dprint"
 }
+```
 
 ## 可选
 
@@ -143,4 +144,3 @@ macOS / Linux：
   老代码、老依赖、老思维都将拖慢你的节奏。
 
 我已经深受其害，希望你不要再踩坑。
-```
