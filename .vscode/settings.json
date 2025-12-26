@@ -11,7 +11,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
   },
-  "dprint.path": "/path/to/dprint",
+  "dprint.path": "C:\\Users\\Administrator\\.dprint\\bin\\dprint.exe",
   "prettier.enable": true,
   "prettier.requireConfig": true,
   "prettier.useEditorConfig": false,
