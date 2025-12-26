@@ -27,7 +27,7 @@ const columns: TableColumn[] = [
   {
     label: '备注',
     prop: 'remark',
-    ellipsis: true
+    showOverflowTooltip: true
   },
   {
     label: 'IP',
@@ -37,7 +37,7 @@ const columns: TableColumn[] = [
   {
     label: 'USER-AGENT',
     prop: 'userAgent',
-    ellipsis: true
+    showOverflowTooltip: true
   },
   {
     label: '上次登录时间',
