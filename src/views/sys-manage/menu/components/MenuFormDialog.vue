@@ -239,7 +239,7 @@ export default {
             <el-radio :value="false">否</el-radio>
           </el-radio-group>
         </el-form-item>
-        <el-form-item prop="enabled" label="状态">
+        <el-form-item prop="enabled" label="是否启用">
           <el-switch v-model="form.enabled" :active-value="1" :inactive-value="0"></el-switch>
         </el-form-item>
       </el-form>
