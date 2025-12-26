@@ -108,7 +108,9 @@ That version is also written with clarity and simplicity in mind.
 
 Remember:\
 **A starter template is a reference, not a rule.\
-Your project should follow your style, not someone else’s.**
+Your project should follow your style, not someone else’s.**\
+
+As I mentioned before, the `full-dev` branch is indeed fully featured, but it also imposes my own ideas. So it’s best to use it as a reference and make sure you really need to use it in full.
 
 ---
 
